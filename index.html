@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memory Game</title>   
+
+    <!--JQuery (CDN) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Bootstrap (CDN) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+<div class="container-fluid">
+    <!--Navigation bar-->
+    <div class="row" id="navBar">
+        <!--App Logo-->
+        <div class="col-lg-6 col-md-12" id="logo-field"> </div>
+        
+        <!--Game level (Easy to Hard)-->
+        <div class="col-lg-6 col-md-12">
+        <!-- <ul>
+                <li><a href="#">Easy</a></li>
+                <li><a href="#">Normal</a></li>
+                <li><a href="#">Hard</a></li>
+            </ul>-->
+        </div>
+    </div>
+
+    <!--Main body-->
+    <div id="mainBody">
+
+        <!--User's Score & Trial & Number of tiles-->
+        <div class="row">
+            <div class="col-12" id="userdata-field"></div>
+        </div>
+        
+        <!--Matrix appears here-->
+        <div class="row">
+            <div class="col-12" id="matrix-container"></div>
+        </div>
+        
+        <!--Quit Button-->
+        <div class="row">
+            <div class="col-12" id="quit-btn-field"></div>
+        </div>
+    
+    </div><!--mainBody end-->
+  
+</div><!--container-fluid end-->
+
+<!--Script-->
+<script src="js/model/strings.js"></script>
+<script src="js/model/model.js"></script>
+<script src="js/view/view.js"></script>
+</body>
+</html>

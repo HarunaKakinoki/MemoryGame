@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memory Game - Summary</title>   
+ 
+     <!--Custom CSS-->
+     <link rel="stylesheet" href="css/style.css">
+ 
+     <!--JQuery (CDN) -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+     <!-- Bootstrap (CDN) -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid summaryDiv">
+
+    <!--Play Data Summary(Score, Number of trials, Accurecy)-->
+    <div class="row">
+        <div class="col-12" id="summary-field"></div>
+    </div>
+    
+    <!--Input Name field-->
+    <div class="row">
+        <div class="col-12" id="name-form"></div>
+    </div>
+    
+    <!--Retry Button & Link to Leader Board Page-->
+    <div class="row">
+        <div class="col-12" id="restart-btn-field"></div>
+    </div>
+    
+</div><!--container-fluid end-->
+
+<!--Script-->
+<script src="js/model/strings.js"></script>
+<script src="js/model/model.js"></script>
+<script src="js/view/view.js"></script>
+<script src="js/controller/summary_controller.js"></script>
+</body>
+</html>
