@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Memory Game</title>   
 
-    <!--JQuery (CDN) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <!-- Bootstrap (CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
@@ -18,19 +15,14 @@
     </head>
 <body>
 <div class="container-fluid">
+    
     <!--Navigation bar-->
-    <div class="row" id="navBar">
+    <div class="row" id="navbar">
         <!--App Logo-->
-        <div class="col-lg-6 col-md-12" id="logo-field"> </div>
+        <div class="col-lg-6 col-md-12" id="logo-field"></div>
         
         <!--Game level (Easy to Hard)-->
-        <div class="col-lg-6 col-md-12">
-        <!-- <ul>
-                <li><a href="#">Easy</a></li>
-                <li><a href="#">Normal</a></li>
-                <li><a href="#">Hard</a></li>
-            </ul>-->
-        </div>
+        <div class="col-lg-6 col-md-12" id="level-field"></div>
     </div>
 
     <!--Main body-->
@@ -56,7 +48,7 @@
 </div><!--container-fluid end-->
 
 <!--Script-->
-<script src="js/model/strings.js"></script>
+<script src="js/model/string.js"></script>
 <script src="js/model/model.js"></script>
 <script src="js/view/view.js"></script>
 </body>
