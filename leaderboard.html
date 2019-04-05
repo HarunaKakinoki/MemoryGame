@@ -16,27 +16,36 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body onload="renderLeaderboardView()">
 
-<div class="container-fluid leaderBoardDiv">
+<div class="container-fluid">
+
+    <!--Navigation bar-->
+    <div class="row" id="navbar">
+        <!--App Logo-->
+        <div class="col-lg-6 col-md-12" id="logo-field"></div>
+        
+        <!--Game level (Easy to Hard)-->
+        <div class="col-lg-6 col-md-12" id="level-field"></div>
+    </div>
     
     <div class="row">   
         <!--UserData-->
-        <div class="col-12" id="rankdata-field"></div>
+        <div class="col-12" id="rank-summary-field"></div>
 
         <!--Ranking Table-->
         <div class="col-12" id="table-field"></div>
         
         <!--Restart Button-->
-        <div class="col-12" id="restart-btn-field"></div>
+        <div class="col-12" id="leaderboard-restart-field"></div>
     </div>
     
 </div><!--container-fluid end-->
 
 <!--Script-->
-<script src="js/model/strings.js"></script>
+<script src="js/model/string.js"></script>
 <script src="js/model/model.js"></script>
 <script src="js/view/view.js"></script>
-<script src="js/controller/leaderboard_controller.js"></script>
+<script src="js/controller/controller.js"></script>
 </body>
 </html>

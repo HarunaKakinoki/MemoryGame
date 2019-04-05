@@ -6,19 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Memory Game - Summary</title>   
  
-     <!--Custom CSS-->
-     <link rel="stylesheet" href="css/style.css">
- 
      <!--JQuery (CDN) -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  
      <!-- Bootstrap (CDN) -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onload="renderSummaryView()">
 
-<div class="container-fluid summaryDiv">
+<div class="container-fluid">
+
+    <!--Navigation bar-->
+    <div class="row" id="navbar">
+        <!--App Logo-->
+        <div class="col-lg-6 col-md-12" id="logo-field"></div>
+        
+        <!--Game level (Easy to Hard)-->
+        <div class="col-lg-6 col-md-12" id="level-field"></div>
+    </div>
 
     <!--Play Data Summary(Score, Number of trials, Accurecy)-->
     <div class="row">
@@ -32,15 +41,15 @@
     
     <!--Retry Button & Link to Leader Board Page-->
     <div class="row">
-        <div class="col-12" id="restart-btn-field"></div>
+        <div class="col-12" id="summary-restart-field"></div>
     </div>
     
 </div><!--container-fluid end-->
 
 <!--Script-->
-<script src="js/model/strings.js"></script>
+<script src="js/model/string.js"></script>
 <script src="js/model/model.js"></script>
 <script src="js/view/view.js"></script>
-<script src="js/controller/summary_controller.js"></script>
+<script src="js/controller/controller.js"></script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+@mixin playSummary(){
+    margin: 0.6em;
+    font-size: $summary-fontsize;
+    color: $summary-textcolor;
+    display: inline-block;
+}
+

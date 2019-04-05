@@ -1,3 +1,6 @@
+const INDEX_PATH = "index.html";
+const LOGO_IMG_PATH = '../../images/logo.png';
+
 /****************Index.html*****************/
 const SCORE_HEADER = "Score : ";
 const TRIAL_HEADER = "Trial : ";

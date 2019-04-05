@@ -2,40 +2,16 @@
 const createElement = (elementName, className = undefined, id = undefined) => {
     const element = document.createElement(elementName);
     
-    if(className != undefined) {
+    if(className != undefined || className === '') {
         element.className = className;
     }
 
-    if(id != undefined) {
+    if(id != undefined || className === '') {
         element.id = id;
     }
     
     return element;
 
-}
-
-const renderIndexView = () => {
-    createLogo('../../images/logo.png');
-    createLevelField(LEVEL_ARRAY);
-    createUserDataField('userdata-field');
-    createMatrix(SIDE_OF_MATRIX);
-    createQuitBtn();
-}
-
-const renderSummaryView = (summaryFieldId, restartBtnFieldId) => {
-    createLogo();
-    createLevelField();
-    createSummary(summaryFieldId);
-    createNameForm();
-    createRestartBtn(restartBtnFieldId);
-}
-
-const renderLeaderboardView = (summaryFieldId, restartBtnFieldId, rankDataArray) => {
-    createLogo('../../images/logo.png');
-    createLevelField();
-    createSummary(summaryFieldId);
-    createRankTable(rankDataArray);
-    createRestartBtn(restartBtnFieldId);
 }
 
 //Find the specfied field by Id, & append the passed element to the field.
@@ -44,20 +20,23 @@ const appendElementToIdField= (fieldId, element) => {
     field.appendChild(element);
 }
 
-const createLogo = (imgSrc) => {
-   const logoImg = createElement('img');
-   logoImg.src = imgSrc;
-   appendElementToIdField('logo-field', logoImg);
+const createLogo = () => {
+   const logoImg = createElement('img', '', 'logoImg');
+   logoImg.src = LOGO_IMG_PATH;
+   const a = createElement('a', '', 'logoLink');
+   a.href = INDEX_PATH;
+   a.appendChild(logoImg);
+   appendElementToIdField('logo-field', a);
 } 
 
-const createLevelField = (levelArray) => {
+const createLevelField = () => {
     const ul = createElement('ul');
     
-    for(let i = 0; i < levelArray.length; ++i) {
+    for(let i = 0; i < LEVEL_ARRAY.length; ++i) {
         const li = createElement('li');
         const a = createElement('a');
         a.href = '#';
-        a.textContent = levelArray[i];
+        a.textContent = LEVEL_ARRAY[i];
         li.appendChild(a);
         ul.appendChild(li);
     }
@@ -113,6 +92,7 @@ const createMatrix = (size) => {
         for(let j = 0; j < size; ++j) { /*col*/
             const tile = createElement('div', 'matrixTiles', ('tile' + tileNum));
             tileNum++;
+            $row.appendChild(tile);
         }
 
         $div.appendChild($row);
@@ -152,7 +132,7 @@ function hideSelectedTiles(numberArr) {
 }
 
 const createQuitBtn = () => {
-    const button = createElement('button', 'buttons', 'quitBtn');
+    const button = createElement('button', 'btn btn-primary buttons', 'quitBtn');
     button.type = 'button';
     button.textContent = QUIT_BTN;
     appendElementToIdField('quit-btn-field', button);
@@ -175,7 +155,7 @@ const createNameForm = () => {
     textInput.placeholder = INPUT_PLACEHOLDER;
 
     //Submit button.
-    const button = createElement('button', 'buttons', 'submitBtn');
+    const button = createElement('button', 'btn btn-info buttons', 'submitBtn');
     button.textContent = SUBMIT_BTN;
 
     appendElementToIdField('name-form', textInput);
@@ -183,7 +163,7 @@ const createNameForm = () => {
 }
 
 const createRestartBtn = (fieldId) => {
-    const button = createElement('button', 'buttons', 'restartBtn');
+    const button = createElement('button', 'btn btn-warning buttons', 'restartBtn');
     button.textContent = RESTART_BTN;
     appendElementToIdField(fieldId, button);
 }
@@ -244,5 +224,36 @@ const createRankTable = (rankDataArray, tableSize) => {
     appendElementToIdField('table-field', table);
 }
 
+const renderIndexView = () => {
+    createLogo();
+    createLevelField();
+    createUserDataField('userdata-field');
+    createMatrix(SIDE_OF_MATRIX);
+    createQuitBtn();
+}
+
+const renderSummaryView = () => {
+    createLogo();
+    createLevelField();
+    createSummary('summary-field');
+    createNameForm();
+    createRestartBtn('summary-restart-field');
+}
+
+const renderLeaderboardView = () => {
+    const rankDataArray = [];
+    const obj = {
+        name: "doraneko",
+        trial: 3,
+        score: 10
+    };
+    rankDataArray.push(obj);
+
+    createLogo();
+    createLevelField();
+    createSummary('rank-summary-field');
+    createRankTable(rankDataArray);
+    createRestartBtn('leaderboard-restart-field');
+}
 
 

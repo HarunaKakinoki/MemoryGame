@@ -1,1 +1,55 @@
 @import "variables";
+@import "mixin";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: $default-fontsize;
+    font-family: $default-font;
+}
+
+li {
+    list-style-type: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.buttons {
+    width: 9%;
+    color: aliceblue;
+    font-size: $default-button-fontsize;
+}
+
+/*!*********************Navbar**********************/
+#logoImg {
+    width: 20%;
+}
+
+#level-field {
+    text-align: right;
+    li {
+        margin: 0.6em;
+        display: inline-block;
+    }
+}
+
+
+.userdataDivs {
+    @include playSummary();   
+}
+
+/*!*********************Index.html**********************/
+.matrixRows {
+    display: block;
+}
+
+.matrixTiles {
+    width: 4em;
+    height: 4em;
+    margin: 0 0.2em;
+    background-color: $default-tile-color;
+    display: inline-block;
+    border-radius: 4px;
+}
