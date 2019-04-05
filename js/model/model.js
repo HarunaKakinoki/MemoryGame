@@ -34,6 +34,7 @@ function randomDegree() {
     return DEGREE_ARRAY[index]; /*Eg : 90 */
 }
 
+
 //Select tiles to be coloured.( = correct tiles)
 function selectTiles() {
     let numberSet = new Set(); /*Use "Set" to get distinct values*/

@@ -14,6 +14,30 @@ const createElement = (elementName, className = undefined, id = undefined) => {
 
 }
 
+const renderIndexView = () => {
+    createLogo('../../images/logo.png');
+    createLevelField(LEVEL_ARRAY);
+    createUserDataField('userdata-field');
+    createMatrix(SIDE_OF_MATRIX);
+    createQuitBtn();
+}
+
+const renderSummaryView = (summaryFieldId, restartBtnFieldId) => {
+    createLogo();
+    createLevelField();
+    createSummary(summaryFieldId);
+    createNameForm();
+    createRestartBtn(restartBtnFieldId);
+}
+
+const renderLeaderboardView = (summaryFieldId, restartBtnFieldId, rankDataArray) => {
+    createLogo('../../images/logo.png');
+    createLevelField();
+    createSummary(summaryFieldId);
+    createRankTable(rankDataArray);
+    createRestartBtn(restartBtnFieldId);
+}
+
 //Find the specfied field by Id, & append the passed element to the field.
 const appendElementToIdField= (fieldId, element) => {
     const field = document.getElementById(fieldId);
@@ -38,7 +62,7 @@ const createLevelField = (levelArray) => {
         ul.appendChild(li);
     }
 
-    appendElementToIdField('level-field', $ul);
+    appendElementToIdField('level-field', ul);
 }
 
 const createUserDataField = (fieldId) => {
@@ -219,7 +243,6 @@ const createRankTable = (rankDataArray, tableSize) => {
     table.appendChild(thead, tbody);
     appendElementToIdField('table-field', table);
 }
-
 
 
 
