@@ -195,6 +195,7 @@ function rotateMatrix() {
     const $div = document.getElementById('tilesField');
     const degree = randomDegree();
 
+    //Rotate a matrix by using css.
     $div.style.webkitTransform = 'rotate('+degree+'deg)'; 
     $div.style.mozTransform    = 'rotate('+degree+'deg)'; 
     $div.style.msTransform     = 'rotate('+degree+'deg)'; 
@@ -304,6 +305,21 @@ const createRankTable = (rankDataArray, tableSize) => {
     appendElementToIdField('table-field', table);
 }
 
+const highlightCurrentLevel = () => {
+    const navLinks = document.getElementsByClassName('levelLinks');
+    switch(SIDE_OF_MATRIX) {
+        case 2:
+          navLinks[0].style.backgroundColor = 'red';
+          break;
+        case 4:
+        navLinks[2].style.backgroundColor = 'red';
+          break;
+        
+        default:
+        navLinks[1].style.backgroundColor = 'red';
+      }
+}
+
 const renderIndexView = () => {
     createLogo();
     createLevelField();
@@ -312,6 +328,7 @@ const renderIndexView = () => {
     createQuitBtn();
     createSwitchLevelModal();
     createQuitConfirmationModal();
+    highlightCurrentLevel();
 }
 
 const renderSummaryView = () => {
