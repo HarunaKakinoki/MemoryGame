@@ -32,6 +32,22 @@ a:link {
     }
 }
 
+.rankLinks {
+    font-size: 0.8em;
+    padding-top: 1em;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 10%;
+    height: 100px;
+    background-image: url('../images/crown.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    text-align: center;
+}
+
 /*!*********************Navbar**********************/
 
 #logoImg {

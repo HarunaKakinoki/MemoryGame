@@ -11,15 +11,15 @@ const SOUND_GAMEOVER = new Audio('../../audio/game_over.mp3');
 
 let score = 0;
 let trial = 1;
-let tiles = 3;
 let correctTiles = SIDE_OF_MATRIX + 1; /*Number of correct tiles.*/
 let foundTiles = 0; /*Number of tiles user found in a trial.*/
+let tiles = correctTiles;
 let maxTiles = SIDE_OF_MATRIX + 1; 
 let mistakeFlag = false; /*A flag for user's mistake in a trial.*/
 let previousIndex = 0;  /*Store the last index of randomly generated degree.*/
 
 //Generate a degree for matrix rotaiton.
-function randomDegree() {
+const randomDegree = () =>  {
 
     //Return a random index 0 to 5.
     let index = Math.floor((Math.random() * DEGREE_ARRAY.length) + 0);
@@ -36,7 +36,7 @@ function randomDegree() {
 
 
 //Select tiles to be coloured.( = correct tiles)
-function selectTiles() {
+const selectTiles = () => {
     let numberSet = new Set(); /*Use "Set" to get distinct values*/
     
     //Generate random numbers & add it to Set.
@@ -49,10 +49,20 @@ function selectTiles() {
     return Array.from(numberSet);
 }
 
+//Reset all values.
+const resetValues = () => {
+    score = 0;
+    trial = 1;
+    
+}
+
 //Accept an audio object, play the audio.
-function playSound(audioObj) {
+const playSound = (audioObj) => {
     audioObj.play();
 }
+
+
+
 
 
 

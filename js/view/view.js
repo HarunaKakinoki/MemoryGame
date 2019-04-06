@@ -54,7 +54,7 @@ const createSwitchLevelModal = () => {
         keyboard: false 
     });
 
-    //Normal
+    //Normal.
     const normalModal = new Modal(normal, 
     { // options object.
         content:  '<div class="modal-header">'
@@ -67,7 +67,7 @@ const createSwitchLevelModal = () => {
         keyboard: false 
     });
 
-    //Normal
+    //Hard.
     const hardModal = new Modal(hard, 
         { // options object.
             content:  '<div class="modal-header">'
