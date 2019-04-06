@@ -20,6 +20,85 @@ const appendElementToIdField= (fieldId, element) => {
     field.appendChild(element);
 }
 
+const createModal = (fieldId, modalId) => {
+    const $div = createElement('div', 'modal fade', modalId);
+    $div.setAttribute('tabindex', -1);
+    $div.setAttribute('role', 'dialog');
+    $div.setAttribute('aria-hidden', 'true');
+    const $div2 = createElement('div', 'modal-dialog');
+    const $content = createElement('div', 'modal-content');
+
+    $div2.appendChild($content);
+    $div.appendChild($div2);
+    appendElementToIdField(fieldId, $div);
+}
+
+const createSwitchLevelModal = () => {
+    createModal('main-container', 'levelModal0');
+    createModal('main-container', 'levelModal1');
+    createModal('main-container', 'levelModal2');
+    const easy = document.getElementsByClassName('levelLinks')[0];
+    const normal = document.getElementsByClassName('levelLinks')[1];
+    const hard = document.getElementsByClassName('levelLinks')[2];
+
+    //Easy.
+    const easyModal = new Modal(easy, 
+    { // options object.
+        content:  '<div class="modal-header">'
+                + '<h4 class="modal-title modalTitles">Switch level to Easy</h4>'
+                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
+                + '</div>'
+                + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Easy (2 x 2) Level?</div>'
+                + '<button class="btn btn-primary yesBtns" value="easy">Yes</button>'
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+        keyboard: false 
+    });
+
+    //Normal
+    const normalModal = new Modal(normal, 
+    { // options object.
+        content:  '<div class="modal-header">'
+                + '<h4 class="modal-title modalTitles">Switch level to Normal</h4>'
+                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
+                + '</div>'
+                + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Normal(3 x 3) Level?</div>'
+                + '<button class="btn btn-primary yesBtns" value="normal">Yes</button>'
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+        keyboard: false 
+    });
+
+    //Normal
+    const hardModal = new Modal(hard, 
+        { // options object.
+            content:  '<div class="modal-header">'
+                    + '<h4 class="modal-title modalTitles">Switch level to Hard</h4>'
+                    + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
+                    + '</div>'
+                    + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Hard(4 x 4) Level?</div>'
+                    + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
+                    + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+            keyboard: false 
+        });
+}
+
+const createQuitConfirmationModal = () => {
+    createModal('main-container', 'quitModal');
+    
+    const button = document.getElementById('quitBtn');
+
+    const quiteModal = new Modal(button, 
+    { // options object
+        content:  '<div class="modal-header">'
+                + '<h4 class="modal-title modalTitles">Quit Game</h4>'
+                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
+                + '</div>'
+                + '<div class="modal-body">Do you really want to quit Game?</div>'
+                + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+        keyboard: false // we don't want to dismiss Modal on pressing Esc key
+    });
+}
+
 const createLogo = () => {
    const logoImg = createElement('img', '', 'logoImg');
    logoImg.src = LOGO_IMG_PATH;
@@ -34,8 +113,9 @@ const createLevelField = () => {
     
     for(let i = 0; i < LEVEL_ARRAY.length; ++i) {
         const li = createElement('li');
-        const a = createElement('a');
-        a.href = '#';
+        const a = createElement('a', 'levelLinks');
+        a.href = '#levelModal' + i;
+        //a.setAttribute('data-target', 'modalID');
         a.textContent = LEVEL_ARRAY[i];
         li.appendChild(a);
         ul.appendChild(li);
@@ -83,7 +163,7 @@ const createUserDataField = (fieldId) => {
 
 const createMatrix = (size) => {
     let tileNum = 0;
-    const $div = createElement('div', 'col-lg-6 col-md-12', 'matrixContainer');
+    const $div = createElement('div', 'col-12', 'matrixContainer');
     
     //Create matrix tiles.
     for(let i = 0; i < size; ++i) { /*row*/
@@ -133,8 +213,8 @@ function hideSelectedTiles(numberArr) {
 
 const createQuitBtn = () => {
     const button = createElement('button', 'btn btn-primary buttons', 'quitBtn');
-    button.type = 'button';
     button.textContent = QUIT_BTN;
+    button.setAttribute('data-target', '#quitModal');
     appendElementToIdField('quit-btn-field', button);
 }
 
@@ -230,6 +310,8 @@ const renderIndexView = () => {
     createUserDataField('userdata-field');
     createMatrix(SIDE_OF_MATRIX);
     createQuitBtn();
+    createSwitchLevelModal();
+    createQuitConfirmationModal();
 }
 
 const renderSummaryView = () => {
@@ -238,6 +320,7 @@ const renderSummaryView = () => {
     createSummary('summary-field');
     createNameForm();
     createRestartBtn('summary-restart-field');
+    createSwitchLevelModal();
 }
 
 const renderLeaderboardView = () => {
@@ -254,6 +337,7 @@ const renderLeaderboardView = () => {
     createSummary('rank-summary-field');
     createRankTable(rankDataArray);
     createRestartBtn('leaderboard-restart-field');
+    createSwitchLevelModal();
 }
 
 
