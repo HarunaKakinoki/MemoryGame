@@ -18,7 +18,7 @@ a:link {
   width: 9%;
   padding: 0.3em;
   color: aliceblue;
-  font-size: 1.2em; }
+  font-size: 1em; }
   .buttons:hover {
     color: grey; }
 
@@ -46,6 +46,20 @@ a:link {
   #level-field li {
     margin: 0.6em;
     display: inline-block; }
+  #level-field .levelLinks {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #ffffff;
+    background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    border-bottom: solid 3px #5e7fca; }
+    #level-field .levelLinks:active {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+      border-bottom: none; }
 
 /*!*********************Index.html**********************/
 #userdata-field {
@@ -59,20 +73,56 @@ a:link {
 #matrix-container {
   margin: 1.5em 0;
   text-align: center; }
-  #matrix-container .matrixRows {
-    display: block; }
-  #matrix-container .matrixTiles {
-    width: 4em;
-    height: 4em;
-    margin: 0 0.2em;
-    background-color: red;
-    display: inline-block;
-    border-radius: 4px; }
+  #matrix-container #tilesContainer {
+    width: 40%;
+    margin: 0 auto;
+    -webkit-transition: transform 1.5s ease-in-out;
+    /*Speed of Matrix rotating*/ }
+    #matrix-container #tilesContainer .matrixRows {
+      display: block;
+      z-index: 999; }
+    #matrix-container #tilesContainer .matrixTiles {
+      width: 4em;
+      height: 4em;
+      margin: 0 0.2em;
+      background-color: #a6e9d7;
+      display: inline-block;
+      border-radius: 4px;
+      box-shadow: 2px 2px 5px;
+      animation: fadeIn 1s ease 0s 1 normal;
+      /*Matrix fade-in setting*/
+      -webkit-animation: fadeIn 1s ease 0s 1 normal;
+      /*Matrix fade-in setting*/ }
+    #matrix-container #tilesContainer .selectedTiles {
+      width: 4em;
+      height: 4em;
+      margin: 0 0.2em;
+      background-color: #a6e9d7;
+      display: inline-block;
+      border-radius: 4px;
+      box-shadow: 2px 2px 5px;
+      animation: fadeIn 1s ease 0s 1 normal;
+      /*Matrix fade-in setting*/
+      -webkit-animation: fadeIn 1s ease 0s 1 normal;
+      /*Matrix fade-in setting*/
+      background-color: #0bcfc9; }
 
-#quit-btn-field {
+/*Fade in settings for matrix*/
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+/*for safari browser*/
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+#buttons-field {
   text-align: center; }
-  #quit-btn-field #quitBtn {
-    margin: 1em; }
+  #buttons-field #quitBtn, #buttons-field #saveBtn {
+    margin: 0.5em; }
 
 /*!*********************summary.html**********************/
 #summary-field {
@@ -91,5 +141,13 @@ a:link {
 
 #summary-restart-field {
   text-align: center; }
+
+.yesno-btns-container {
+  text-align: center; }
+
+.yesBtns, .noBtns {
+  width: 25%;
+  display: inline-block;
+  margin: 0.5em; }
 
 /*# sourceMappingURL=style.css.map */

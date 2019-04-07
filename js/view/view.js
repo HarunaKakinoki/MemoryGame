@@ -49,8 +49,10 @@ const createSwitchLevelModal = () => {
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
                 + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Easy (2 x 2) Level?</div>'
+                + '<div class="yesno-btns-container">'
                 + '<button class="btn btn-primary yesBtns" value="easy">Yes</button>'
-                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                + '</div>', 
         keyboard: false 
     });
 
@@ -62,8 +64,10 @@ const createSwitchLevelModal = () => {
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
                 + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Normal(3 x 3) Level?</div>'
+                + '<div class="yesno-btns-container">'
                 + '<button class="btn btn-primary yesBtns" value="normal">Yes</button>'
-                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                + '</div>', 
         keyboard: false 
     });
 
@@ -75,8 +79,11 @@ const createSwitchLevelModal = () => {
                     + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                     + '</div>'
                     + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Hard(4 x 4) Level?</div>'
+                    + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Easy (2 x 2) Level?</div>'
+                    + '<div class="yesno-btns-container">'
                     + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
-                    + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+                    + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                    + '</div>',  
             keyboard: false 
         });
 }
@@ -93,8 +100,11 @@ const createQuitConfirmationModal = () => {
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
                 + '<div class="modal-body">Do you really want to quit Game?</div>'
-                + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
-                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>', 
+                + '<div class="modal-body">Score will starts from 0'
+                + '<div class="yesno-btns-container">'
+                + '<button class="btn btn-primary yesBtns">Yes</button>'
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                + '</div>',  
         keyboard: false // we don't want to dismiss Modal on pressing Esc key
     });
 }
@@ -145,7 +155,7 @@ const createUserDataField = (fieldId) => {
     const tilesHeader = createElement('span');
     tilesHeader.textContent = TILES_HEADER;
     const numOftiles = createElement('span', 'userDatas', 'tiles');
-    numOftiles.textContent = tiles;
+    numOftiles.textContent = correctTiles;
 
     //Append each element to div.
     $scoreDiv.appendChild(scoreHeader);
@@ -163,7 +173,7 @@ const createUserDataField = (fieldId) => {
 
 const createMatrix = (size) => {
     let tileNum = 0;
-    const $div = createElement('div', 'col-12', 'matrixContainer');
+    const $div = createElement('div', 'col-12', 'tilesContainer');
     
     //Create matrix tiles.
     for(let i = 0; i < size; ++i) { /*row*/
@@ -182,17 +192,17 @@ const createMatrix = (size) => {
 
 //Colour seleted(correct) tiles.
 const colourSelectedTiles = (numberArray) => {
+    console.log(numberArray)
     for(let i = 0; i < numberArray.length; ++i) {
         const tileId = 'tile' + numberArray[i]; /*Eg: tile3*/
         const tile = document.getElementById(tileId);
-        tile.className = 'selectedTiles';
-        tile.style.backgroundColor = CORRECT_TILES_COLOUR; /*Set tile color*/
+        tile.className = 'selectedTiles'; /*Color will be changed by adding this classname*/
     }
 }
 
 //Rotate Matrix.
 function rotateMatrix() {
-    const $div = document.getElementById('tilesField');
+    const $div = document.getElementById('tilesContainer');
     const degree = randomDegree();
 
     //Rotate a matrix by using css.
@@ -204,11 +214,11 @@ function rotateMatrix() {
 }
 
 //Hide the color of correct tiles before rotating matrix.
-function hideSelectedTiles(numberArr) {
-    for(let i = 0; i < numberArr.length; ++i) {
+function hideSelectedTiles(numberArray) {
+    for(let i = 0; i < numberArray.length; ++i) {
         const tileId = 'tile' + numberArray[i]; /*Eg: tile3*/
         const tile = document.getElementById(tileId);
-        tile.style.backgroundColor = NORMAL_TILES_COLOUR; 
+        tile.style.backgroundColor = DEFAULT_TILE_COLOUR; 
     }
 }
 
@@ -216,7 +226,14 @@ const createQuitBtn = () => {
     const button = createElement('button', 'btn btn-primary buttons', 'quitBtn');
     button.textContent = QUIT_BTN;
     button.setAttribute('data-target', '#quitModal');
-    appendElementToIdField('quit-btn-field', button);
+    appendElementToIdField('buttons-field', button);
+}
+
+const createSaveBtn = () => {
+    const button = createElement('button', 'btn btn-warning buttons', 'saveBtn');
+    button.textContent = SAVE_BTN;
+    //button.setAttribute('data-target', '#quitModal');
+    appendElementToIdField('buttons-field', button);
 }
 
 const createSummary = (fieldId) => {
@@ -305,18 +322,21 @@ const createRankTable = (rankDataArray, tableSize) => {
     appendElementToIdField('table-field', table);
 }
 
+const createLeaderboardLink = () => {
+    
+}
+
 const highlightCurrentLevel = () => {
-    const navLinks = document.getElementsByClassName('levelLinks');
-    switch(SIDE_OF_MATRIX) {
-        case 2:
-          navLinks[0].style.backgroundColor = 'red';
+    const levelLinks = document.getElementsByClassName('levelLinks');
+    switch(sideOfMatrix) {
+        case 2: /*Easy*/
+          levelLinks[0].style.backgroundColor = 'red';
           break;
-        case 4:
-        navLinks[2].style.backgroundColor = 'red';
+        case 4: /*Hard*/
+        levelLinks[2].style.backgroundColor = 'red';
           break;
-        
-        default:
-        navLinks[1].style.backgroundColor = 'red';
+        default: /*Normal*/
+        levelLinks[1].style.backgroundColor = 'red';
       }
 }
 
@@ -324,8 +344,9 @@ const renderIndexView = () => {
     createLogo();
     createLevelField();
     createUserDataField('userdata-field');
-    createMatrix(SIDE_OF_MATRIX);
+    createMatrix(sideOfMatrix);
     createQuitBtn();
+    createSaveBtn();
     createSwitchLevelModal();
     createQuitConfirmationModal();
     highlightCurrentLevel();

@@ -1,7 +1,19 @@
-@mixin playSummary(){
+@mixin playSummary() {
     margin: 0.6em;
     font-size: $summary-fontsize;
     color: $summary-textcolor;
     display: inline-block;
+}
+
+@mixin tiles() {
+    width: 4em;
+    height: 4em;
+    margin: 0 0.2em;
+    background-color: $default-tile-color;
+    display: inline-block;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px;
+    animation: fadeIn 1s ease 0s 1 normal;          /*Matrix fade-in setting*/
+    -webkit-animation: fadeIn 1s ease 0s 1 normal; /*Matrix fade-in setting*/
 }
 

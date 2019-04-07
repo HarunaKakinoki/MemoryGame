@@ -61,6 +61,25 @@ a:link {
         margin: 0.6em;
         display: inline-block;
     }
+
+    .levelLinks  {
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        border-radius: 4px;
+        color: #ffffff;
+        background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+        border-bottom: solid 3px #5e7fca;
+
+            &:active {
+                -webkit-transform: translateY(4px);
+                transform: translateY(4px);
+                box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+                border-bottom: none;
+            }
+    }
+    
 }
 
 /*!*********************Index.html**********************/
@@ -76,25 +95,46 @@ a:link {
     margin: 1.5em 0;
     text-align: center;
 
-    .matrixRows {
-        display: block;
-    }
+    #tilesContainer {
+        width: 40%;
+        margin: 0 auto;
+        -webkit-transition: transform 1.5s ease-in-out; /*Speed of Matrix rotating*/
     
-    .matrixTiles {
-        width: 4em;
-        height: 4em;
-        margin: 0 0.2em;
-        background-color: $default-tile-color;
-        display: inline-block;
-        border-radius: 4px;
+        .matrixRows {
+            display: block;
+            z-index: 999;
+        }
+        
+        .matrixTiles {
+          @include tiles();
+        }
+    
+        .selectedTiles {
+            @include tiles();
+            background-color: $correct-tile-color;
+        }
     }
 }
 
-#quit-btn-field {
+/*Fade in settings for matrix*/
+@keyframes fadeIn { 
+    0% {opacity: 0} 
+    100% {opacity: 1} 
+}
+
+/*for safari browser*/
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+
+
+#buttons-field {
     text-align: center;
     
-    #quitBtn {
-        margin: 1em;
+    #quitBtn, #saveBtn {
+        margin: 0.5em;
     }
 }
 
@@ -122,3 +162,12 @@ a:link {
     text-align: center;
 }
 
+.yesno-btns-container {
+    text-align: center;
+}
+
+.yesBtns, .noBtns {
+    width: 25%;
+    display: inline-block;
+    margin: 0.5em;
+}

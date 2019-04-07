@@ -1,11 +1,14 @@
 const INDEX_PATH = "index.html";
 const LOGO_IMG_PATH = '../../images/logo.png';
+const LOCALSTORAGE_KEY = "userData";
+const DEFAULT_TILE_COLOUR = "#a6e9d7";
 
 /****************Index.html*****************/
 const SCORE_HEADER = "Score : ";
 const TRIAL_HEADER = "Trial : ";
 const TILES_HEADER = "Tiles : ";
 const QUIT_BTN = "Quit";
+const SAVE_BTN = "Save";
 
 /***************summary.html***************/
 const SUMMARY_HEADER = "Your Play Data Summary!";
