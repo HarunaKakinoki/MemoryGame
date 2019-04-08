@@ -322,8 +322,8 @@ const createRankTable = (rankDataArray, tableSize) => {
     appendElementToIdField('table-field', table);
 }
 
-const createLeaderboardLink = () => {
-    
+const showTileColor = (tileId) => {
+    document.getElementById(tileId).style.backgroundColor = CORRECT_TILE_COLOUR;
 }
 
 const highlightCurrentLevel = () => {

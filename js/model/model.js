@@ -49,9 +49,12 @@ function checkClickedTile(clickedTile) {
     
     if(clickedTile.className === "selectedTiles") {
         playSound(SOUND_CORRECT);
-        return true;
+        const tileId = clickedTile.id;
+        return {
+            result: true,
+            id : tileId
+        };
     }
-    
     playSound(SOUND_WRONG);
     return false;
 }
