@@ -1,7 +1,8 @@
 const INDEX_PATH = "index.html";
-const LOGO_IMG_PATH = '../../images/logo.png';
+const LOGO_IMG_PATH = "../../images/logo.png";
 const LOCALSTORAGE_KEY = "userData";
 const DEFAULT_TILE_COLOUR = "#a6e9d7";
+
 
 /****************Index.html*****************/
 const SCORE_HEADER = "Score : ";
@@ -9,6 +10,9 @@ const TRIAL_HEADER = "Trial : ";
 const TILES_HEADER = "Tiles : ";
 const QUIT_BTN = "Quit";
 const SAVE_BTN = "Save";
+const SOUND_CORRECT = "../../audio/correct.mp3";
+const SOUND_WRONG = "../../audio/wrong.mp3";
+const SOUND_GAMEOVER = "../../audio/game_over.mp3";
 
 /***************summary.html***************/
 const SUMMARY_HEADER = "Your Play Data Summary!";

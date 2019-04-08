@@ -1,9 +1,6 @@
 const LEVEL_ARRAY = ['Easy', 'Normal', 'Hard'];
 const DEGREE_ARRAY = [90, 180, -90, -180];
 const SCORE_LOWER_BOUND = 0;
-const SOUND_CORRECT = new Audio('../../audio/correct.mp3');
-const SOUND_WRONG = new Audio('../../audio/wrong.mp3');
-const SOUND_GAMEOVER = new Audio('../../audio/game_over.mp3');
 
 let score = 0;
 let trial = 1;
@@ -15,6 +12,7 @@ let foundTiles = 0; /*Number of tiles user found in a trial.*/
 let maxTiles = sideOfMatrix + 1; 
 let mistakeFlag = false; /*A flag for user's mistake in a trial.*/
 let previousIndex = 0;  /*Store the last index of randomly generated degree.*/
+let selectedTileNumbers = [];
 
 //Generate a degree for matrix rotaiton.
 const randomDegree = () =>  {
@@ -47,6 +45,17 @@ const selectTiles = () => {
     return Array.from(numberSet);
 }
 
+function checkClickedTile(clickedTile) {
+    
+    if(clickedTile.className === "selectedTiles") {
+        playSound(SOUND_CORRECT);
+        return true;
+    }
+    
+    playSound(SOUND_WRONG);
+    return false;
+}
+
 const saveUserDataToLocalStorage = () => {
     const user = {
         score : score,
@@ -66,8 +75,9 @@ const resetValues = () => {
 }
 
 //Accept an audio object, play the audio.
-const playSound = (audioObj) => {
-    audioObj.play();
+const playSound = (audioPath) => {
+    const audio = new Audio(audioPath);
+    audio.play();
 }
 
 
