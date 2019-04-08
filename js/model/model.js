@@ -45,6 +45,12 @@ const selectTiles = () => {
     return Array.from(numberSet);
 }
 
+const disableOnclickEvent = (id) => {
+    document.getElementById(id).onclick = function () {
+        return false;
+    }
+}
+
 function checkClickedTile(clickedTile) {
     
     if(clickedTile.className === "selectedTiles") {
@@ -57,6 +63,13 @@ function checkClickedTile(clickedTile) {
     }
     playSound(SOUND_WRONG);
     return false;
+}
+
+const checkTrialEnd = () => {
+    if(correctTiles > foundTiles) {
+        return false;
+    }
+    return true;
 }
 
 const saveUserDataToLocalStorage = () => {

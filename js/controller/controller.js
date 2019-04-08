@@ -10,15 +10,36 @@ const gameStart = () => {
 const processUserClick = (clickedTile) => {
     const result = checkClickedTile(clickedTile).result;
     
-    if(result != false && clickedTile.className === 'selectedTiles') {
+    if(result === true && clickedTile.className === 'selectedTiles') {
         const id = checkClickedTile(clickedTile).id;
         showTileColor(id);
+        score++;
+        foundTiles++;
+        disableOnclickEvent(id);
+    
+    } else {
+        score--;
+        if(score < SCORE_LOWER_BOUND) {
+            gameOver();
+        }
     }
 
-    return result;
+    updateNumberDisplay('score', score);
+    if(checkTrialEnd()) {
+        setTimeout(function () {
+            startNextTrial();
+        }, 1000);
+    }
 }
 
+const startNextTrial = () => {
+    playSound(SOUND_CORRECT)
+}
 
+const gameOver = () => {
+    score = 0;
+    alert("0")
+}
 
 const indexInit = () => {
     renderIndexView();

@@ -200,6 +200,10 @@ const colourSelectedTiles = (numberArray) => {
     }
 }
 
+const updateNumberDisplay = (fieldId, newNumber) => {
+    document.getElementById(fieldId).textContent = newNumber;
+}
+
 //Rotate Matrix.
 function rotateMatrix() {
     const $div = document.getElementById('tilesContainer');
