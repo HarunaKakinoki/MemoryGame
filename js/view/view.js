@@ -191,11 +191,11 @@ const createMatrix = (size) => {
 }
 
 //Colour seleted(correct) tiles.
-const colourSelectedTiles = (numberArray) => {
-    console.log(numberArray)
-    for(let i = 0; i < numberArray.length; ++i) {
-        const tileId = 'tile' + numberArray[i]; /*Eg: tile3*/
+const colourSelectedTiles = () => {
+    for(let i = 0; i < selectedTileNumbers.length; ++i) {
+        const tileId = 'tile' + selectedTileNumbers[i]; /*Eg: tile3*/
         const tile = document.getElementById(tileId);
+        alert(tileId)
         tile.className = 'selectedTiles'; /*Color will be changed by adding this classname*/
     }
 }
@@ -218,9 +218,10 @@ function rotateMatrix() {
 }
 
 //Hide the color of correct tiles before rotating matrix.
-function hideSelectedTiles(numberArray) {
-    for(let i = 0; i < numberArray.length; ++i) {
-        const tileId = 'tile' + numberArray[i]; /*Eg: tile3*/
+function hideSelectedTiles() {
+    console.log(selectedTileNumbers);
+    for(let i = 0; i < selectedTileNumbers.length; ++i) {
+        const tileId = 'tile' + selectedTileNumbers[i]; /*Eg: tile3*/
         const tile = document.getElementById(tileId);
         tile.style.backgroundColor = DEFAULT_TILE_COLOUR; 
     }

@@ -13,7 +13,8 @@ const QUIT_BTN = "Quit";
 const SAVE_BTN = "Save";
 const SOUND_CORRECT = "../../audio/correct.mp3";
 const SOUND_WRONG = "../../audio/wrong.mp3";
-const SOUND_GAMEOVER = "../../audio/game_over.mp3";
+const SOUND_GAMEOVER = "../../audio/gameOver.mp3";
+const SOUND_NEXTTRIAL = "../../audio/nextTrial.mp3";
 
 /***************summary.html***************/
 const SUMMARY_HEADER = "Your Play Data Summary!";

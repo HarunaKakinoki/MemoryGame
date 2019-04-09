@@ -1,15 +1,18 @@
 const LEVEL_ARRAY = ['Easy', 'Normal', 'Hard'];
 const DEGREE_ARRAY = [90, 180, -90, -180];
 const SCORE_LOWER_BOUND = 0;
+const DEFAULT_SCORE_RATE = 1;
+const HARD_SCORE_RATE = 2;
 
 let score = 0;
 let trial = 1;
+let tiles = 0;
+let scoreRate = DEFAULT_SCORE_RATE; /*By default*/
 let sideOfMatrix = 3; /*By default, (Normal = 3 * 3 matrix)*/
 let correctTiles = sideOfMatrix + 1; /*Number of correct tiles.*/
 let correctTilesLowerBound = sideOfMatrix - 1;
 let correctTilesUpperBound = sideOfMatrix * 2;
 let foundTiles = 0; /*Number of tiles user found in a trial.*/
-let maxTiles = sideOfMatrix + 1; 
 let mistakeFlag = false; /*A flag for user's mistake in a trial.*/
 let previousIndex = 0;  /*Store the last index of randomly generated degree.*/
 let selectedTileNumbers = [];
@@ -72,6 +75,40 @@ const checkTrialEnd = () => {
     return true;
 }
 
+const addScore = () => {
+    score += scoreRate;
+}
+
+const checkUserMistake = () => {
+    if(mistakeFlag === false) {
+        return true;
+    }
+    return false;
+}
+
+const setDataForNextTrial = () => {
+    foundTiles = SCORE_LOWER_BOUND;
+    trial++;
+    mistakeFlag = false;
+
+    if(correctTiles < correctTilesLowerBound) {
+        correctTiles = correctTilesLowerBound;
+    } else if(correctTilesUpperBound < correctTilesUpperBound) {
+        correctTiles = correctTilesUpperBound;
+    }
+
+    if(tiles < correctTiles) {
+        tiles = correctTiles;
+    }
+
+    //Remove 
+    for(let i = 0; i < selectedTileNumbers.length; ++i) {
+        const tile = document.getElementById('tile' + selectedTileNumbers[i]);
+        tile.classList.remove('selectedTiles');
+        tile.classList.add('matrixTiles');
+    }
+}
+
 const saveUserDataToLocalStorage = () => {
     const user = {
         score : score,
@@ -82,12 +119,6 @@ const saveUserDataToLocalStorage = () => {
     };
 
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(user));
-}
-
-//Reset all values.
-const resetValues = () => {
-    score = 0;
-    trial = 1;
 }
 
 //Accept an audio object, play the audio.
