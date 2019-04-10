@@ -195,8 +195,8 @@ const colourSelectedTiles = () => {
     for(let i = 0; i < selectedTileNumbers.length; ++i) {
         const tileId = 'tile' + selectedTileNumbers[i]; /*Eg: tile3*/
         const tile = document.getElementById(tileId);
-        alert(tileId)
         tile.className = 'selectedTiles'; /*Color will be changed by adding this classname*/
+        tile.style.backgroundColor = CORRECT_TILE_COLOUR;
     }
 }
 

@@ -38,6 +38,7 @@ const startNextTrial = () => {
     playSound(SOUND_NEXTTRIAL);
     setDataForNextTrial();
     gameStart();
+    colourSelectedTiles();
     for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
         document.getElementById('tile' + i).onclick = function() { 
             //checkClickedTile(this);
