@@ -96,7 +96,8 @@ a:link {
     text-align: center;
 
     #tilesContainer {
-        width: 40%;
+        width: 33%;
+        background: red;
         margin: 0 auto;
         -webkit-transition: transform 1.5s ease-in-out; /*Speed of Matrix rotating*/
     
@@ -133,7 +134,7 @@ a:link {
 #buttons-field {
     text-align: center;
     
-    #quitBtn, #saveBtn {
+    #saveBtn {
         margin: 0.5em;
     }
 }

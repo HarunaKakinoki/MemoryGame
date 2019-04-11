@@ -74,7 +74,8 @@ a:link {
   margin: 1.5em 0;
   text-align: center; }
   #matrix-container #tilesContainer {
-    width: 40%;
+    width: 33%;
+    background: red;
     margin: 0 auto;
     -webkit-transition: transform 1.5s ease-in-out;
     /*Speed of Matrix rotating*/ }
@@ -121,7 +122,7 @@ a:link {
     opacity: 1; } }
 #buttons-field {
   text-align: center; }
-  #buttons-field #quitBtn, #buttons-field #saveBtn {
+  #buttons-field #saveBtn {
     margin: 0.5em; }
 
 /*!*********************summary.html**********************/

@@ -350,7 +350,7 @@ const renderIndexView = () => {
     createLevelField();
     createUserDataField('userdata-field');
     createMatrix(sideOfMatrix);
-    createQuitBtn();
+    //createQuitBtn();
     createSaveBtn();
     createSwitchLevelModal();
     createQuitConfirmationModal();
