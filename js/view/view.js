@@ -79,7 +79,6 @@ const createSwitchLevelModal = () => {
                     + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                     + '</div>'
                     + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Hard(4 x 4) Level?</div>'
-                    + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Easy (2 x 2) Level?</div>'
                     + '<div class="yesno-btns-container">'
                     + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
                     + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
@@ -88,21 +87,41 @@ const createSwitchLevelModal = () => {
         });
 }
 
+const createGameOverModal = () => {
+    createModal('main-container', 'gameOverModal');
+
+    const modal = document.getElementById('gameOverModal');
+    const modalInstance = new Modal(modal, {
+        content: '<div class="modal-header">'
+                + '<h4 class="modal-title modalTitles">Game Over</h4>'
+                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
+                + '</div>'
+                + '<div class="modal-body">Score reached to 0! Please retry!</div>'
+                + '<div id="restart-btn-container">'
+                + '<button class="btn btn-primary" id="modalRestartBtn">Restart</button>'
+                + '</div>', 
+        backdrop: 'static',
+        keyboard: false
+    });
+
+    modalInstance.show();
+}
+
 const createQuitConfirmationModal = () => {
     createModal('main-container', 'quitModal');
     
-    const button = document.getElementById('quitBtn');
+    const button = document.getElementById('saveBtn');
 
     const quiteModal = new Modal(button, 
     { // options object
         content:  '<div class="modal-header">'
-                + '<h4 class="modal-title modalTitles">Quit Game</h4>'
+                + '<h4 class="modal-title modalTitles">Save Score</h4>'
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
-                + '<div class="modal-body">Do you really want to quit Game?</div>'
-                + '<div class="modal-body">Score will starts from 0'
+                + '<div class="modal-body">Move onto summary page and You can register your score with your name on the leaderboard.</div>'
+                + '<div class="modal-body">Really Ok to quit game now?'
                 + '<div class="yesno-btns-container">'
-                + '<button class="btn btn-primary yesBtns">Yes</button>'
+                + '<button class="btn btn-primary yesBtns" id="saveModalYesBtn">Yes</button>'
                 + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
                 + '</div>',  
         keyboard: false // we don't want to dismiss Modal on pressing Esc key
@@ -200,6 +219,11 @@ const colourSelectedTiles = () => {
     }
 }
 
+//To show "Saved" message, show toast.
+const showToast = () => {
+
+}
+
 const updateNumberDisplay = (fieldId, newNumber) => {
     document.getElementById(fieldId).textContent = newNumber;
 }
@@ -227,17 +251,17 @@ function hideSelectedTiles() {
     }
 }
 
-const createQuitBtn = () => {
+/*const createQuitBtn = () => {
     const button = createElement('button', 'btn btn-primary buttons', 'quitBtn');
     button.textContent = QUIT_BTN;
     button.setAttribute('data-target', '#quitModal');
     appendElementToIdField('buttons-field', button);
-}
+}*/
 
 const createSaveBtn = () => {
     const button = createElement('button', 'btn btn-warning buttons', 'saveBtn');
     button.textContent = SAVE_BTN;
-    //button.setAttribute('data-target', '#quitModal');
+    button.setAttribute('data-target', '#quitModal');
     appendElementToIdField('buttons-field', button);
 }
 
@@ -335,13 +359,13 @@ const highlightCurrentLevel = () => {
     const levelLinks = document.getElementsByClassName('levelLinks');
     switch(sideOfMatrix) {
         case 2: /*Easy*/
-          levelLinks[0].style.backgroundColor = 'red';
+        levelLinks[0].style.backgroundImage= 'linear-gradient(grey 0%, blue 100%)';
           break;
         case 4: /*Hard*/
-        levelLinks[2].style.backgroundColor = 'red';
+        levelLinks[2].style.backgroundImage= 'linear-gradient(grey 0%, blue 100%)';
           break;
         default: /*Normal*/
-        levelLinks[1].style.backgroundColor = 'red';
+        levelLinks[1].style.backgroundImage= 'linear-gradient(grey 0%, blue 100%)';
       }
 }
 
@@ -350,20 +374,18 @@ const renderIndexView = () => {
     createLevelField();
     createUserDataField('userdata-field');
     createMatrix(sideOfMatrix);
-    //createQuitBtn();
     createSaveBtn();
     createSwitchLevelModal();
     createQuitConfirmationModal();
+    createGameOverModal();
     highlightCurrentLevel();
 }
 
 const renderSummaryView = () => {
     createLogo();
-    createLevelField();
     createSummary('summary-field');
     createNameForm();
     createRestartBtn('summary-restart-field');
-    createSwitchLevelModal();
 }
 
 const renderLeaderboardView = () => {
@@ -376,11 +398,9 @@ const renderLeaderboardView = () => {
     rankDataArray.push(obj);
 
     createLogo();
-    createLevelField();
     createSummary('rank-summary-field');
     createRankTable(rankDataArray);
     createRestartBtn('leaderboard-restart-field');
-    createSwitchLevelModal();
 }
 
 

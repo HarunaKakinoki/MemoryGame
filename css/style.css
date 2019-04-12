@@ -74,8 +74,7 @@ a:link {
   margin: 1.5em 0;
   text-align: center; }
   #matrix-container #tilesContainer {
-    width: 33%;
-    background: red;
+    width: 32%;
     margin: 0 auto;
     -webkit-transition: transform 1.5s ease-in-out;
     /*Speed of Matrix rotating*/ }

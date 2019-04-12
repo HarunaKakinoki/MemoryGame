@@ -1,4 +1,6 @@
 const INDEX_PATH = "index.html";
+const SUMMARY_PATH = "summary.html";
+const LEADERBOARD_PATH = "leaderboard.html";
 const LOGO_IMG_PATH = "../../images/logo.png";
 const LOCALSTORAGE_KEY = "userData";
 const DEFAULT_TILE_COLOUR = "#a6e9d7";
@@ -11,6 +13,7 @@ const TRIAL_HEADER = "Trial : ";
 const TILES_HEADER = "Tiles : ";
 const QUIT_BTN = "Quit";
 const SAVE_BTN = "Save";
+const LEADERBOARD_LINK_TEXT = "See Leaderboard";
 const SOUND_CORRECT = "../../audio/correct.mp3";
 const SOUND_WRONG = "../../audio/wrong.mp3";
 const SOUND_GAMEOVER = "../../audio/gameOver.mp3";
