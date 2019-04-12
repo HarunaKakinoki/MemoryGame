@@ -51,7 +51,7 @@ const preapreForNextTrial = () => {
     hideSelectedTiles();
     setDataForNextTrial();
     updateNumberDisplay('trial', trial);
-    updateNumberDisplay('tiles', maxTiles);
+    updateNumberDisplay('tiles', correctTiles);
 }
 
 const startNextTrial = () => {
@@ -64,6 +64,14 @@ const startNextTrial = () => {
         };
     }
 }
+
+function changeGameLevel(selectedLevel) {
+    setDataToChangeLevel(selectedLevel);
+    removeMatrix();
+    createMatrix(5);
+    updateNumberDisplay('tiles', correctTiles);
+}
+
 
 const gameOver = () => {
     score = 0;
@@ -92,10 +100,21 @@ const setSaveModalBtnEvent = () => {
    };
 }
 
+const setChangingLevelEvent = () => {
+    const buttons = document.getElementsByClassName('yesBtns');
+    for(let i = 0; i < buttons.length; ++i) {
+        buttons[i].onclick = function () {
+            changeGameLevel(this.value);
+            alert("YEE")
+        };
+    }
+}
+
 const indexInit = () => {
     renderIndexView();
     setLeaderBoardLinkEvent();
     setSaveModalBtnEvent();
+    setChangingLevelEvent();
     gameStart();
     for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
         console.log(document.getElementById('tile' + i))

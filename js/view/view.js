@@ -241,6 +241,11 @@ function rotateMatrix() {
     $div.style.transform       = 'rotate('+degree+'deg)'; 
 }
 
+const removeMatrix = () => {
+    const matrix = document.getElementById('tilesContainer');
+    matrix.remove();
+}
+
 //Hide the color of correct tiles before rotating matrix.
 function hideSelectedTiles() {
     console.log(selectedTileNumbers);

@@ -8,7 +8,7 @@ let score = 0;
 let trial = 1;
 let maxTiles = 0;
 let scoreRate = DEFAULT_SCORE_RATE; /*By default*/
-let sideOfMatrix = 3; /*By default, (Normal = 3 * 3 matrix)*/
+let sideOfMatrix = 4; /*By default, (Normal = 3 * 3 matrix)*/
 let correctTiles = sideOfMatrix + 1; /*Number of correct tiles.*/
 let correctTilesLowerBound = sideOfMatrix - 1;
 let correctTilesUpperBound = sideOfMatrix * 2;
@@ -112,6 +112,27 @@ const setDataForNextTrial = () => {
         tile.classList.remove('selectedTiles');
         tile.classList.add('matrixTiles');
     }
+}
+
+const setDataToChangeLevel = (selectedLevel) => {
+    //Easy.
+    if(selectedLevel === 'easy') {
+        
+        sideOfMatrix = 2;
+    
+    //Hard.
+    } else if (selectedLevel === 'hard') {
+        
+        sideOfMatrix = 4;
+    
+    //Normal.
+    } else { 
+        
+        sideOfMatrix = 3;
+    
+    }
+    foundTiles = 0;
+    mistakeFlag = false;
 }
 
 
