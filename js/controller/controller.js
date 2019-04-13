@@ -59,7 +59,6 @@ const startNextTrial = () => {
     colourSelectedTiles();
     for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
         document.getElementById('tile' + i).onclick = function() { 
-            //checkClickedTile(this);
             processUserClick(this); 
         };
     }
@@ -70,6 +69,7 @@ function changeGameLevel(selectedLevel) {
     removeMatrix();
     createMatrix(sideOfMatrix);
     updateNumberDisplay('tiles', correctTiles);
+    startNextTrial();
 }
 
 
@@ -77,6 +77,7 @@ const gameOver = () => {
     const modal = createGameOverModal();
     setRestartBtnEvent();
     modal.show();
+    removeMatrix();
 }
 
 const setLeaderBoardLinkEvent = () => {
@@ -123,7 +124,6 @@ const indexInit = () => {
     for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
         console.log(document.getElementById('tile' + i))
         document.getElementById('tile' + i).onclick = function() { 
-            //checkClickedTile(this);
             processUserClick(this);
         };
     }

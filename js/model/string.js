@@ -4,7 +4,7 @@ const LEADERBOARD_PATH = "leaderboard.html";
 const LOGO_IMG_PATH = "../../images/logo.png";
 const LOCALSTORAGE_KEY = "userData";
 const DEFAULT_TILE_COLOUR = "#a6e9d7";
-const CORRECT_TILE_COLOUR = " #0bcfc9";
+const CORRECT_TILE_COLOUR = "#0bcfc9";
 
 
 /****************Index.html*****************/

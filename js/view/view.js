@@ -94,9 +94,9 @@ const createGameOverModal = () => {
     const modalInstance = new Modal(modal, {
         content: '<div class="modal-header">'
                 + '<h4 class="modal-title modalTitles">Game Over</h4>'
-                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
                 + '<div class="modal-body">Score reached to 0! Please retry!</div>'
+                + '<img id="gameoverImg" alt="game over image" src="../images/gameover.png">'
                 + '<div id="restart-btn-container">'
                 + '<button class="btn btn-primary" id="restartBtn">Restart</button>'
                 + '</div>', 
@@ -121,7 +121,7 @@ const createQuitConfirmationModal = () => {
                 + '<div class="modal-body">Move onto summary page and You can register your score with your name on the leaderboard.</div>'
                 + '<div class="modal-body">Really Ok to quit game now?'
                 + '<div class="yesno-btns-container">'
-                + '<button class="btn btn-primary yesBtns" id="saveModalYesBtn">Yes</button>'
+                + '<button class="btn btn-primary" id="saveModalYesBtn">Yes</button>'
                 + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
                 + '</div>',  
         keyboard: false // we don't want to dismiss Modal on pressing Esc key
@@ -252,7 +252,6 @@ function hideSelectedTiles() {
     for(let i = 0; i < selectedTileNumbers.length; ++i) {
         const tileId = 'tile' + selectedTileNumbers[i]; /*Eg: tile3*/
         const tile = document.getElementById(tileId);
-        alert(tile)
         tile.style.backgroundColor = DEFAULT_TILE_COLOUR; 
     }
 }

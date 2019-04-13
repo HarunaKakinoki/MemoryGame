@@ -124,6 +124,9 @@ a:link {
   #buttons-field #saveBtn {
     margin: 0.5em; }
 
+#gameoverImg {
+  width: 70%; }
+
 /*!*********************summary.html**********************/
 #summary-field {
   text-align: center; }
