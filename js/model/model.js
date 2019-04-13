@@ -8,7 +8,7 @@ let score = 0;
 let trial = 1;
 let maxTiles = 0;
 let scoreRate = DEFAULT_SCORE_RATE; /*By default*/
-let sideOfMatrix = 4; /*By default, (Normal = 3 * 3 matrix)*/
+let sideOfMatrix = 4; /*By default, (Normal = 4 * 4 matrix)*/
 let correctTiles = sideOfMatrix + 1; /*Number of correct tiles.*/
 let correctTilesLowerBound = sideOfMatrix - 1;
 let correctTilesUpperBound = sideOfMatrix * 2;
@@ -118,17 +118,20 @@ const setDataToChangeLevel = (selectedLevel) => {
     //Easy.
     if(selectedLevel === 'easy') {
         
-        sideOfMatrix = 2;
+        sideOfMatrix = 3;
+        scoreRate = DEFAULT_SCORE_RATE;
     
     //Hard.
     } else if (selectedLevel === 'hard') {
         
         sideOfMatrix = 4;
+        scoreRate = HARD_SCORE_RATE; // + 2 points per 1 correct answer.
     
     //Normal.
     } else { 
         
-        sideOfMatrix = 3;
+        sideOfMatrix = 4;
+        scoreRate = DEFAULT_SCORE_RATE;
     
     }
     foundTiles = 0;

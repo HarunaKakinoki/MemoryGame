@@ -68,13 +68,15 @@ const startNextTrial = () => {
 function changeGameLevel(selectedLevel) {
     setDataToChangeLevel(selectedLevel);
     removeMatrix();
-    createMatrix(5);
+    createMatrix(sideOfMatrix);
     updateNumberDisplay('tiles', correctTiles);
 }
 
 
 const gameOver = () => {
-    score = 0;
+    const modal = createGameOverModal();
+    setRestartBtnEvent();
+    modal.show();
 }
 
 const setLeaderBoardLinkEvent = () => {
@@ -105,7 +107,9 @@ const setChangingLevelEvent = () => {
     for(let i = 0; i < buttons.length; ++i) {
         buttons[i].onclick = function () {
             changeGameLevel(this.value);
-            alert("YEE")
+            const modal = document.getElementById('levelModal' + i);
+            const modalInstance = new Modal(modal);
+            modalInstance.hide();
         };
     }
 }

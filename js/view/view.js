@@ -48,7 +48,7 @@ const createSwitchLevelModal = () => {
                 + '<h4 class="modal-title modalTitles">Switch level to Easy</h4>'
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
-                + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Easy (2 x 2) Level?</div>'
+                + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Easy (3 x 3) Level?</div>'
                 + '<div class="yesno-btns-container">'
                 + '<button class="btn btn-primary yesBtns" value="easy">Yes</button>'
                 + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
@@ -63,7 +63,7 @@ const createSwitchLevelModal = () => {
                 + '<h4 class="modal-title modalTitles">Switch level to Normal</h4>'
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
-                + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Normal(3 x 3) Level?</div>'
+                + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Normal(4 x 4) Level?</div>'
                 + '<div class="yesno-btns-container">'
                 + '<button class="btn btn-primary yesBtns" value="normal">Yes</button>'
                 + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
@@ -78,7 +78,7 @@ const createSwitchLevelModal = () => {
                     + '<h4 class="modal-title modalTitles">Switch level to Hard</h4>'
                     + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                     + '</div>'
-                    + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Hard(4 x 4) Level?</div>'
+                    + '<div class="modal-body">Score will starts from 0.<br>Do you really want to switch to Hard(4 x 4 matrix & 6 types of rotating) Level?</div>'
                     + '<div class="yesno-btns-container">'
                     + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
                     + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
@@ -98,13 +98,13 @@ const createGameOverModal = () => {
                 + '</div>'
                 + '<div class="modal-body">Score reached to 0! Please retry!</div>'
                 + '<div id="restart-btn-container">'
-                + '<button class="btn btn-primary" id="modalRestartBtn">Restart</button>'
+                + '<button class="btn btn-primary" id="restartBtn">Restart</button>'
                 + '</div>', 
         backdrop: 'static',
         keyboard: false
     });
 
-    modalInstance.show();
+    return modalInstance;
 }
 
 const createQuitConfirmationModal = () => {
@@ -252,6 +252,7 @@ function hideSelectedTiles() {
     for(let i = 0; i < selectedTileNumbers.length; ++i) {
         const tileId = 'tile' + selectedTileNumbers[i]; /*Eg: tile3*/
         const tile = document.getElementById(tileId);
+        alert(tile)
         tile.style.backgroundColor = DEFAULT_TILE_COLOUR; 
     }
 }
@@ -382,7 +383,7 @@ const renderIndexView = () => {
     createSaveBtn();
     createSwitchLevelModal();
     createQuitConfirmationModal();
-    createGameOverModal();
+    //createGameOverModal();
     highlightCurrentLevel();
 }
 
