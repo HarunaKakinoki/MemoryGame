@@ -277,7 +277,7 @@ const createSummary = (fieldId) => {
 
 const createNameForm = () => {
     //Input field.
-    const textInput = createElement('input', 'nameInput');
+    const textInput = createElement('input', '', 'nameInput');
     textInput.type = 'text';
     textInput.placeholder = INPUT_PLACEHOLDER;
 
@@ -287,6 +287,10 @@ const createNameForm = () => {
 
     appendElementToIdField('name-form', textInput);
     appendElementToIdField('name-form', button);
+}
+
+const showNameFormAlert = () => {
+    document.getElementById('nameAlert').style.visibility = 'show'
 }
 
 const createRestartBtn = (fieldId) => {

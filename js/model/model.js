@@ -149,6 +149,28 @@ const saveUserDataToLocalStorage = () => {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(user));
 }
 
+const isNameInputValid = () => {
+    const username = document.getElementById('nameInput').value;
+    if(username === "" || username == undefined) {
+        return false;
+    }
+    return true;
+}
+
+const saveUserNameToLocalStorage = () => {
+    //Get user name from input.
+    const username = document.getElementById('nameInput').value;
+
+    //Fetch stored user object from localstorage.
+    const user = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    
+    //Add username info to the user object.
+    user.name = username;
+
+    //Save up-to-date user object to localstorage.
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(user));
+}
+
 //Accept an audio object, play the audio.
 const playSound = (audioPath) => {
     const audio = new Audio(audioPath);

@@ -4,6 +4,7 @@ const gameStart = () => {
     setTimeout(function() {
         hideSelectedTiles();
         rotateMatrix();
+        setTileClickEvent();
     }, 3000); /*After 3 seconds, hide tile color & Rotate matrix.*/
 }
 
@@ -139,6 +140,19 @@ const setSaveModalBtnEvent = () => {
    };
 }
 
+const setSubmitBtnEvent = () => {
+    const button = document.getElementById('submitBtn');
+    button.onclick = function() {
+        if(isNameInputValid()) {
+            saveUserNameToLocalStorage();
+            window.location.href = LEADERBOARD_PATH;
+        } else {
+            
+        }
+       
+    };
+}
+
 const setChangingLevelEvent = () => {
     const buttons = document.getElementsByClassName('yesBtns');
     for(let i = 0; i < buttons.length; ++i) {
@@ -152,23 +166,26 @@ const setChangingLevelEvent = () => {
     }
 }
 
-const indexInit = () => {
-    renderIndexView();
-    setLeaderBoardLinkEvent();
-    setSaveModalBtnEvent();
-    setChangingLevelEvent();
-    gameStart();
+const setTileClickEvent = () => {
     for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
         console.log(document.getElementById('tile' + i))
         document.getElementById('tile' + i).onclick = function() { 
             processUserClick(this);
         };
     }
-   
+}
+
+const indexInit = () => {
+    renderIndexView();
+    setLeaderBoardLinkEvent();
+    setSaveModalBtnEvent();
+    setChangingLevelEvent();
+    gameStart();
 }
 
 const summaryInit = () => {
     renderSummaryView();
+    setSubmitBtnEvent();
     setRestartBtnEvent();
 }
 
