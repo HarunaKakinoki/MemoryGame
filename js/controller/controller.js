@@ -37,6 +37,7 @@ const processUserClick = (clickedTile) => {
     
     //Incorrect tile was clicked.
     } else {
+
         minusScore();
         mistakeFlag = true;
         
@@ -80,6 +81,8 @@ function changeGameLevel(selectedLevel) {
     //Highlight the current level button.
     highlightCurrentLevel();
 
+    setLevelBtnEvent(selectedLevel);
+
     startNextTrial();
 }
 
@@ -105,11 +108,34 @@ const setRestartBtnEvent = () => {
    };
 }
 
+const setLevelBtnEvent = (selectedLevel) => {
+    const levelLinks = document.getElementsByClassName('levelLinks');
+    let index = 0;
+
+    switch(selectedLevel) {
+        case 'easy':
+                    index = 0;
+                    break;
+        case 'normal':
+                    index = 1;
+                    break;
+        case 'hard':
+                    index = 2;
+                    break;
+    }
+
+    
+    levelLinks[index].onclick = function () {
+            const modal = document.getElementById('levelModal' + index);
+            const modalInstance = new Modal(modal);
+            modalInstance.show();
+    }
+}
+
 const setSaveModalBtnEvent = () => {
     document.getElementById('saveModalYesBtn').onclick = function () {
         window.location.href = SUMMARY_PATH;
         saveUserDataToLocalStorage();
-        showToast();
    };
 }
 
