@@ -35,7 +35,7 @@ const processUserClick = (clickedTile) => {
     
     //Incorrect tile was clicked.
     } else {
-        score--;
+        minusScore();
         mistakeFlag = true;
         
         if(score < SCORE_LOWER_BOUND) {

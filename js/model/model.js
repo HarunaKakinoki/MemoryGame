@@ -58,6 +58,10 @@ const addScore = () => {
     score += scoreRate;
 }
 
+const minusScore = () => {
+    score -= scoreRate;
+}
+
 function checkClickedTile(clickedTile) {
     
     if(clickedTile.className === "selectedTiles") {
@@ -115,25 +119,22 @@ const setDataForNextTrial = () => {
 }
 
 const setDataToChangeLevel = (selectedLevel) => {
-    //Easy.
-    if(selectedLevel === 'easy') {
-        
-        sideOfMatrix = 3;
-        scoreRate = DEFAULT_SCORE_RATE;
-    
-    //Hard.
-    } else if (selectedLevel === 'hard') {
-        
-        sideOfMatrix = 4;
-        scoreRate = HARD_SCORE_RATE; // + 2 points per 1 correct answer.
-    
-    //Normal.
-    } else { 
-        
-        sideOfMatrix = 4;
-        scoreRate = DEFAULT_SCORE_RATE;
-    
+    switch(selectedLevel) {
+        case 'easy':
+                    sideOfMatrix = 3;
+                    scoreRate = DEFAULT_SCORE_RATE;
+                    break;
+        case 'normal':
+                    sideOfMatrix = 4;
+                    scoreRate = DEFAULT_SCORE_RATE;
+                    break;
+        case 'hard':
+                    sideOfMatrix = 4;
+                    scoreRate = HARD_SCORE_RATE; // + 2 points per 1 correct answer.
+                    break;
     }
+
+    correctTiles = sideOfMatrix + 1;
     foundTiles = 0;
     mistakeFlag = false;
 }
