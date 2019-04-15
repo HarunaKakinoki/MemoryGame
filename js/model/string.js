@@ -5,6 +5,8 @@ const LOGO_IMG_PATH = "../../images/logo.png";
 const LOCALSTORAGE_KEY = "userData";
 const DEFAULT_TILE_COLOUR = "#a6e9d7";
 const CORRECT_TILE_COLOUR = "#0bcfc9";
+const LEVELLINK_DEFAULT_CLOUR = "linear-gradient(#6795fd 0%, #67ceff 100%)";
+const LEVELLINK_CURRENT_COLOUR = "linear-gradient(grey 0%, blue 100%)";
 
 
 /****************Index.html*****************/

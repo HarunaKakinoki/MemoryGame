@@ -219,11 +219,6 @@ const colourSelectedTiles = () => {
     }
 }
 
-//To show "Saved" message, show toast.
-const showToast = () => {
-
-}
-
 const updateNumberDisplay = (fieldId, newNumber) => {
     document.getElementById(fieldId).textContent = newNumber;
 }
@@ -360,17 +355,35 @@ const showTileColor = (tileId) => {
     document.getElementById(tileId).style.backgroundColor = CORRECT_TILE_COLOUR;
 }
 
+const hideLevelColour = () => {
+    const levelLinks = document.getElementsByClassName('levelLinks');
+    switch(currentLevel) {
+       
+        case 'easy':
+                    levelLinks[0].style.backgroundImage= LEVELLINK_DEFAULT_CLOUR;
+                    break;
+        case 'normal':
+                    levelLinks[1].style.backgroundImage= LEVELLINK_DEFAULT_CLOUR;
+                    break;
+        case 'hard':
+                    levelLinks[2].style.backgroundImage= LEVELLINK_DEFAULT_CLOUR;
+                    break;
+      }
+}
+
 const highlightCurrentLevel = () => {
     const levelLinks = document.getElementsByClassName('levelLinks');
-    switch(sideOfMatrix) {
-        case 2: /*Easy*/
-        levelLinks[0].style.backgroundImage= 'linear-gradient(grey 0%, blue 100%)';
-          break;
-        case 4: /*Hard*/
-        levelLinks[2].style.backgroundImage= 'linear-gradient(grey 0%, blue 100%)';
-          break;
-        default: /*Normal*/
-        levelLinks[1].style.backgroundImage= 'linear-gradient(grey 0%, blue 100%)';
+    switch(currentLevel) {
+       
+        case 'easy':
+                    levelLinks[0].style.backgroundImage= LEVELLINK_CURRENT_COLOUR;
+                    break;
+        case 'normal':
+                    levelLinks[1].style.backgroundImage= LEVELLINK_CURRENT_COLOUR;
+                    break;
+        case 'hard':
+                    levelLinks[2].style.backgroundImage= LEVELLINK_CURRENT_COLOUR;
+                    break;
       }
 }
 

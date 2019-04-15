@@ -1,4 +1,4 @@
-const LEVEL_ARRAY = ['Easy', 'Normal', 'Hard'];
+const LEVEL_ARRAY = ['easy', 'normal', 'hard'];
 const DEGREE_ARRAY = [90, 180, -90, -180];
 const SCORE_LOWER_BOUND = 0;
 const DEFAULT_SCORE_RATE = 1;
@@ -7,6 +7,7 @@ const HARD_SCORE_RATE = 2;
 let score = 0;
 let trial = 1;
 let maxTiles = 0;
+let currentLevel = LEVEL_ARRAY[1];
 let scoreRate = DEFAULT_SCORE_RATE; /*By default*/
 let sideOfMatrix = 4; /*By default, (Normal = 4 * 4 matrix)*/
 let correctTiles = sideOfMatrix + 1; /*Number of correct tiles.*/
@@ -76,13 +77,6 @@ function checkClickedTile(clickedTile) {
     return false;
 }
 
-const checkTrialEnd = () => {
-    if(correctTiles > foundTiles) {
-        return false;
-    }
-    return true;
-}
-
 const setDataForNextTrial = () => {
     foundTiles = SCORE_LOWER_BOUND;
     trial++;
@@ -121,14 +115,17 @@ const setDataForNextTrial = () => {
 const setDataToChangeLevel = (selectedLevel) => {
     switch(selectedLevel) {
         case 'easy':
+                    currentLevel = LEVEL_ARRAY[0];
                     sideOfMatrix = 3;
                     scoreRate = DEFAULT_SCORE_RATE;
                     break;
         case 'normal':
+                    currentLevel = LEVEL_ARRAY[1];
                     sideOfMatrix = 4;
                     scoreRate = DEFAULT_SCORE_RATE;
                     break;
         case 'hard':
+                    currentLevel = LEVEL_ARRAY[2];
                     sideOfMatrix = 4;
                     scoreRate = HARD_SCORE_RATE; // + 2 points per 1 correct answer.
                     break;

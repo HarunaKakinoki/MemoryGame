@@ -26,7 +26,9 @@ const processUserClick = (clickedTile) => {
         //To avoid over counting, disalbe the event occured by clicking the tile.
         disableOnclickEvent(id);
 
-        if(checkTrialEnd()) {
+        //Check trial is end or not.
+        const isTrialEnd = (correctTiles > foundTiles) ? false : true;
+        if(isTrialEnd) {
             setTimeout(function () {
                 preapreForNextTrial();
                 startNextTrial();
@@ -65,10 +67,19 @@ const startNextTrial = () => {
 }
 
 function changeGameLevel(selectedLevel) {
+    //Set all data according to the selected level.
     setDataToChangeLevel(selectedLevel);
+
+    //Remove old matrix & create new matrix based on the level.
     removeMatrix();
     createMatrix(sideOfMatrix);
+
+    //Change the display of number of tiles. (User data field)
     updateNumberDisplay('tiles', correctTiles);
+    
+    //Highlight the current level button.
+    highlightCurrentLevel();
+
     startNextTrial();
 }
 
@@ -77,7 +88,6 @@ const gameOver = () => {
     const modal = createGameOverModal();
     setRestartBtnEvent();
     modal.show();
-    removeMatrix();
 }
 
 const setLeaderBoardLinkEvent = () => {
@@ -107,6 +117,7 @@ const setChangingLevelEvent = () => {
     const buttons = document.getElementsByClassName('yesBtns');
     for(let i = 0; i < buttons.length; ++i) {
         buttons[i].onclick = function () {
+            hideLevelColour();
             changeGameLevel(this.value);
             const modal = document.getElementById('levelModal' + i);
             const modalInstance = new Modal(modal);
