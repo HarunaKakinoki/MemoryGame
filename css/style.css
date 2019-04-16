@@ -74,11 +74,13 @@ a:link {
   margin: 1.5em 0;
   text-align: center; }
   #matrix-container #tilesContainer {
-    width: 40%;
+    width: 30%;
     margin: 0 auto;
+    z-index: 999;
     -webkit-transition: transform 1.5s ease-in-out;
     /*Speed of Matrix rotating*/ }
     #matrix-container #tilesContainer .matrixRows {
+      background: red;
       display: block;
       z-index: 999; }
     #matrix-container #tilesContainer .matrixTiles {
@@ -138,9 +140,15 @@ a:link {
     color: grey;
     display: inline-block; }
 
-#name-form input, #name-form #submitBtn {
-  margin: 0.5em auto;
-  display: block; }
+#name-form {
+  text-align: center; }
+  #name-form #nameAlert {
+    visibility: hidden;
+    font-size: 0.8em;
+    color: red; }
+  #name-form input, #name-form #submitBtn {
+    margin: 0.7em auto;
+    display: block; }
 
 #summary-restart-field {
   text-align: center; }

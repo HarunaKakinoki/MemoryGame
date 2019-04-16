@@ -24,6 +24,7 @@ const SOUND_NEXTTRIAL = "../../audio/nextTrial.mp3";
 /***************summary.html***************/
 const SUMMARY_HEADER = "Your Play Data Summary!";
 const INPUT_PLACEHOLDER = "Enter your name";
+const NAME_INPUT_ALERT = "Please enter user name to register score on the learderboard.";
 const SUBMIT_BTN = "Submit";
 const RESTART_BTN = "Restart";
 

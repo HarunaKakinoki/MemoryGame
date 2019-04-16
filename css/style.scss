@@ -96,11 +96,13 @@ a:link {
     text-align: center;
 
     #tilesContainer {
-        width: 40%;
+        width: 30%;
         margin: 0 auto;
+        z-index: 999;
         -webkit-transition: transform 1.5s ease-in-out; /*Speed of Matrix rotating*/
     
         .matrixRows {
+            background: red;
             display: block;
             z-index: 999;
         }
@@ -156,8 +158,16 @@ a:link {
 }
 
 #name-form {
+    text-align: center;
+
+    #nameAlert {
+        visibility: hidden;
+        font-size: 0.8em;
+        color: red;
+    }
+
     input, #submitBtn {
-        margin: 0.5em auto;
+        margin: 0.7em auto;
         display: block;
     }
 }

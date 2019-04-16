@@ -95,7 +95,7 @@ const createGameOverModal = () => {
         content: '<div class="modal-header">'
                 + '<h4 class="modal-title modalTitles">Game Over</h4>'
                 + '</div>'
-                + '<div class="modal-body">Score reached to 0! Please retry!</div>'
+                + '<div class="modal-body">Score reached to 0! Please Retry!</div>'
                 + '<img id="gameoverImg" alt="game over image" src="../images/gameover.png">'
                 + '<div id="restart-btn-container">'
                 + '<button class="btn btn-primary" id="restartBtn">Restart</button>'
@@ -251,13 +251,6 @@ function hideSelectedTiles() {
     }
 }
 
-/*const createQuitBtn = () => {
-    const button = createElement('button', 'btn btn-primary buttons', 'quitBtn');
-    button.textContent = QUIT_BTN;
-    button.setAttribute('data-target', '#quitModal');
-    appendElementToIdField('buttons-field', button);
-}*/
-
 const createSaveBtn = () => {
     const button = createElement('button', 'btn btn-warning buttons', 'saveBtn');
     button.textContent = SAVE_BTN;
@@ -276,6 +269,10 @@ const createSummary = (fieldId) => {
 }
 
 const createNameForm = () => {
+    //Input alert.
+    const alert = createElement('p', '', 'nameAlert');
+    alert.textContent = NAME_INPUT_ALERT;
+
     //Input field.
     const textInput = createElement('input', '', 'nameInput');
     textInput.type = 'text';
@@ -285,12 +282,13 @@ const createNameForm = () => {
     const button = createElement('button', 'btn btn-info buttons', 'submitBtn');
     button.textContent = SUBMIT_BTN;
 
+    appendElementToIdField('name-form', alert);
     appendElementToIdField('name-form', textInput);
     appendElementToIdField('name-form', button);
 }
 
 const showNameFormAlert = () => {
-    document.getElementById('nameAlert').style.visibility = 'show'
+    document.getElementById('nameAlert').style.visibility = 'visible';
 }
 
 const createRestartBtn = (fieldId) => {
@@ -355,6 +353,13 @@ const createRankTable = (rankDataArray, tableSize) => {
     appendElementToIdField('table-field', table);
 }
 
+const displayUserSummary = () => {
+    const user = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    document.getElementById('score').textContent = user.score;
+    document.getElementById('trial').textContent = user.trial;
+    document.getElementById('tiles').textContent = user.tiles;
+}
+
 const showTileColor = (tileId) => {
     document.getElementById(tileId).style.backgroundColor = CORRECT_TILE_COLOUR;
 }
@@ -399,13 +404,13 @@ const renderIndexView = () => {
     createSaveBtn();
     createSwitchLevelModal();
     createQuitConfirmationModal();
-    //createGameOverModal();
     highlightCurrentLevel();
 }
 
 const renderSummaryView = () => {
     createLogo();
     createSummary('summary-field');
+    displayUserSummary();
     createNameForm();
     createRestartBtn('summary-restart-field');
 }
@@ -421,6 +426,7 @@ const renderLeaderboardView = () => {
 
     createLogo();
     createSummary('rank-summary-field');
+    displayUserSummary();
     createRankTable(rankDataArray);
     createRestartBtn('leaderboard-restart-field');
 }

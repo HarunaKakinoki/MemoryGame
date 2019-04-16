@@ -59,13 +59,11 @@ const preapreForNextTrial = () => {
 }
 
 const startNextTrial = () => {
+    for(let i = 0; i < (sideOfMatrix * sideOfMatrix); i++) {
+        disableOnclickEvent('tile' + i);
+    }
     gameStart();
     colourSelectedTiles();
-    for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
-        document.getElementById('tile' + i).onclick = function() { 
-            processUserClick(this); 
-        };
-    }
 }
 
 function changeGameLevel(selectedLevel) {
@@ -125,7 +123,6 @@ const setLevelBtnEvent = (selectedLevel) => {
                     break;
     }
 
-    
     levelLinks[index].onclick = function () {
             const modal = document.getElementById('levelModal' + index);
             const modalInstance = new Modal(modal);
@@ -147,7 +144,7 @@ const setSubmitBtnEvent = () => {
             saveUserNameToLocalStorage();
             window.location.href = LEADERBOARD_PATH;
         } else {
-            
+            showNameFormAlert();
         }
        
     };
@@ -177,9 +174,9 @@ const setTileClickEvent = () => {
 
 const indexInit = () => {
     renderIndexView();
-    setLeaderBoardLinkEvent();
     setSaveModalBtnEvent();
     setChangingLevelEvent();
+    setLeaderBoardLinkEvent();
     gameStart();
 }
 
@@ -187,6 +184,7 @@ const summaryInit = () => {
     renderSummaryView();
     setSubmitBtnEvent();
     setRestartBtnEvent();
+    setLeaderBoardLinkEvent();
 }
 
 const leaderboardInit = () => {

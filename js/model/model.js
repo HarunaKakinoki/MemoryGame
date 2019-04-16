@@ -12,7 +12,7 @@ let scoreRate = DEFAULT_SCORE_RATE; /*By default*/
 let sideOfMatrix = 4; /*By default, (Normal = 4 * 4 matrix)*/
 let correctTiles = sideOfMatrix + 1; /*Number of correct tiles.*/
 let correctTilesLowerBound = sideOfMatrix - 1;
-let correctTilesUpperBound = sideOfMatrix * 2;
+let correctTilesUpperBound = (sideOfMatrix * 2);
 let foundTiles = 0; /*Number of tiles user found in a trial.*/
 let mistakeFlag = false; /*A flag for user's mistake in a trial.*/
 let previousIndex = 0;  /*Store the last index of randomly generated degree.*/
@@ -79,21 +79,23 @@ function checkClickedTile(clickedTile) {
 
 const setDataForNextTrial = () => {
     foundTiles = SCORE_LOWER_BOUND;
+    correctTilesLowerBound = sideOfMatrix - 1;
+    correctTilesUpperBound = (sideOfMatrix * 2);
     trial++;
     
     //When user make at least 1 mistake during the trial.
     if(mistakeFlag === true) {
         correctTiles--;
         
-        if(correctTiles < correctTilesLowerBound) {
+        if(correctTiles <= correctTilesLowerBound) {
             correctTiles = correctTilesLowerBound;
         } 
     
     //When user did not make any mistakes through the trial.
     } else {
         correctTiles++;
-
-        if(correctTiles > correctTilesUpperBound) {
+      
+        if(correctTiles >= correctTilesUpperBound) {
             correctTiles = correctTilesUpperBound;
         }
     }
