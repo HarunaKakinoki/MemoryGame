@@ -7,12 +7,15 @@ const DEFAULT_TILE_COLOUR = "#a6e9d7";
 const CORRECT_TILE_COLOUR = "#0bcfc9";
 const LEVELLINK_DEFAULT_CLOUR = "linear-gradient(#6795fd 0%, #67ceff 100%)";
 const LEVELLINK_CURRENT_COLOUR = "linear-gradient(grey 0%, blue 100%)";
-
-
-/****************Index.html*****************/
 const SCORE_HEADER = "Score : ";
 const TRIAL_HEADER = "Trial : ";
 const TILES_HEADER = "Tiles : ";
+const RANK_HEADER = "Rank : ";
+const NAME_HEADER = "Name : ";
+
+
+
+/****************Index.html*****************/
 const QUIT_BTN = "Quit";
 const SAVE_BTN = "Save";
 const LEADERBOARD_LINK_TEXT = "See Leaderboard";

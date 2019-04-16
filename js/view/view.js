@@ -268,6 +268,36 @@ const createSummary = (fieldId) => {
     createUserDataField(fieldId);
 }
 
+const createLeaderBoardSummary = (fieldId) => {
+    //Rank.
+    const $rankDiv = createElement('div', 'userDataDivs');
+    const rankNum = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).rank;
+    const rankHeader = createElement('span');
+    rankHeader.textContent = RANK_HEADER;
+    const rank = createElement('span', 'userDatas', 'ranking');
+    rank.textContent = rankNum;
+    
+    //Name.
+    const $nameDiv = createElement('div', 'userDataDivs');
+    const name = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).name;
+    const nameHeader = createElement('span');
+    nameHeader.textContent = NAME_HEADER;
+    const username = createElement('span', 'userDatas', 'userName');
+    
+    if(name != null || name != undefined) {
+        username.textContent = name;
+    }
+
+    $rankDiv.appendChild(rankHeader);
+    $rankDiv.appendChild(rank);
+    appendElementToIdField(fieldId, $rankDiv);
+
+    $nameDiv.appendChild(nameHeader);
+    $nameDiv.appendChild(username);
+    appendElementToIdField(fieldId, $nameDiv);
+    createUserDataField(fieldId);
+}
+
 const createNameForm = () => {
     //Input alert.
     const alert = createElement('p', '', 'nameAlert');
@@ -425,7 +455,7 @@ const renderLeaderboardView = () => {
     rankDataArray.push(obj);
 
     createLogo();
-    createSummary('rank-summary-field');
+    createLeaderBoardSummary('rank-summary-field');
     displayUserSummary();
     createRankTable(rankDataArray);
     createRestartBtn('leaderboard-restart-field');
