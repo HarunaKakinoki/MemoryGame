@@ -159,10 +159,7 @@ const isNameInputValid = () => {
     return true;
 }
 
-const saveUserNameToLocalStorage = () => {
-    //Get user name from input.
-    const username = document.getElementById('nameInput').value;
-
+const saveUserNameToLocalStorage = (username) => {
     //Fetch stored user object from localstorage.
     const user = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
     
@@ -173,11 +170,98 @@ const saveUserNameToLocalStorage = () => {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(user));
 }
 
+//Post user data by using ajax.(Store data to database).
+function postUserData() {
+    const user = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)); 
+    const name = document.getElementById('nameInput').value; /*only username is get from user input*/
+    const score = user.score;
+    const trial = user.trial;
+    const tiles = user.tiles;
+    
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if ( this.readyState == 4 && this.status == 200 ) {
+            selectResult.innerHTML = this.responseText; // Display the result inside result element.
+        }
+    };
+    xhr.open("POST", '/score/add', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    //Check the petition Method
+if (xhr.HttpMethod == "OPTIONS")
+{
+    //In case of an OPTIONS, we allow the access to the origin of the petition
+    const vlsOrigin = Request.Headers["ORIGIN"];
+    Response.AddHeader("Access-Control-Allow-Origin", vlsOrigin);
+    Response.AddHeader("Access-Control-Allow-Methods", "POST");
+    Response.AddHeader("Access-Control-Allow-Headers", "accept, content-type");
+    Response.AddHeader("Access-Control-Max-Age", "1728000");
+}
+    xhr.send(JSON.stringify({
+        name : name,
+        score: score,
+        trial: trial,
+        tiles: tiles
+    }));
+    
+    /*$.ajax({
+      type: 'POST',
+      url: '/score/add',
+      data: JSON.stringify({
+        name: name,
+        score: score,
+        trial: trial,
+        tiles: tiles
+      }),
+      contentType: 'application/json'
+    }).done(function(data) {
+      
+        //Response from server.
+      console.log(data);
+    
+    });*/
+
+    //To display current user's name on the leader board.
+    //Save name data to local storage.
+    saveUserNameToLocalStorage(name);
+}
+
+//Get User Data by using ajax & 
+//Store all data into an array & return it.
+function getUserData() {
+    let rankArray = [];
+    
+    $.ajax({
+      type: 'GET',
+      url: '/score/',
+    }).done(function( data ) {
+        
+        //Iterate through all data acquired by GET.
+        for (let i = 0; i < Object.keys(data).length; i++) {
+            const user = {
+                name : data[i].username,
+                score : data[i].score
+            };
+            
+            rankArray.push(user);
+        }
+    });
+
+    const returnVal = new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve(rankArray);
+        }, 500);
+    });
+
+    return  returnVal;
+  }
+
+
 //Accept an audio object, play the audio.
 const playSound = (audioPath) => {
     const audio = new Audio(audioPath);
     audio.play();
 }
+
 
 
 

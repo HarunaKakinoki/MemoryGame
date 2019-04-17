@@ -1,13 +1,13 @@
 @mixin playSummary() {
-    margin: 0.6em;
+    margin: 0.5em;
     font-size: $summary-fontsize;
     color: $summary-textcolor;
     display: inline-block;
 }
 
 @mixin tiles() {
-    width: 4em;
-    height: 4em;
+    width: $tile-length;
+    height: $tile-length;
     margin: 0 0.2em;
     background-color: $default-tile-color;
     display: inline-block;

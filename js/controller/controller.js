@@ -132,8 +132,8 @@ const setLevelBtnEvent = (selectedLevel) => {
 
 const setSaveModalBtnEvent = () => {
     document.getElementById('saveModalYesBtn').onclick = function () {
-        window.location.href = SUMMARY_PATH;
         saveUserDataToLocalStorage();
+        window.location.href = SUMMARY_PATH;
    };
 }
 
@@ -141,14 +141,15 @@ const setSubmitBtnEvent = () => {
     const button = document.getElementById('submitBtn');
     button.onclick = function() {
         if(isNameInputValid()) {
-            saveUserNameToLocalStorage();
-            window.location.href = LEADERBOARD_PATH;
+            postUserData();
+            //window.location.href = LEADERBOARD_PATH;
         } else {
             showNameFormAlert();
         }
-       
     };
 }
+
+
 
 const setChangingLevelEvent = () => {
     const buttons = document.getElementsByClassName('yesBtns');

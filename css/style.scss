@@ -92,19 +92,17 @@ a:link {
 }
 
 #matrix-container {
-    margin: 1.5em 0;
+    margin: 0.5em 0;
     text-align: center;
+    z-index: 999;
 
     #tilesContainer {
-        width: 30%;
+        width: 35%;
         margin: 0 auto;
-        z-index: 999;
         -webkit-transition: transform 1.5s ease-in-out; /*Speed of Matrix rotating*/
     
         .matrixRows {
-            background: red;
             display: block;
-            z-index: 999;
         }
         
         .matrixTiles {
@@ -136,7 +134,7 @@ a:link {
     text-align: center;
     
     #saveBtn {
-        margin: 0.5em;
+        margin: 0.8em;
     }
 }
 

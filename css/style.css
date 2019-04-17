@@ -65,27 +65,25 @@ a:link {
 #userdata-field {
   text-align: center; }
   #userdata-field .userdataDivs {
-    margin: 0.6em;
+    margin: 0.5em;
     font-size: 1.5em;
     color: grey;
     display: inline-block; }
 
 #matrix-container {
-  margin: 1.5em 0;
-  text-align: center; }
+  margin: 0.5em 0;
+  text-align: center;
+  z-index: 999; }
   #matrix-container #tilesContainer {
-    width: 30%;
+    width: 35%;
     margin: 0 auto;
-    z-index: 999;
     -webkit-transition: transform 1.5s ease-in-out;
     /*Speed of Matrix rotating*/ }
     #matrix-container #tilesContainer .matrixRows {
-      background: red;
-      display: block;
-      z-index: 999; }
+      display: block; }
     #matrix-container #tilesContainer .matrixTiles {
-      width: 4em;
-      height: 4em;
+      width: 3.4em;
+      height: 3.4em;
       margin: 0 0.2em;
       background-color: #a6e9d7;
       display: inline-block;
@@ -96,8 +94,8 @@ a:link {
       -webkit-animation: fadeIn 1s ease 0s 1 normal;
       /*Matrix fade-in setting*/ }
     #matrix-container #tilesContainer .selectedTiles {
-      width: 4em;
-      height: 4em;
+      width: 3.4em;
+      height: 3.4em;
       margin: 0 0.2em;
       background-color: #a6e9d7;
       display: inline-block;
@@ -124,7 +122,7 @@ a:link {
 #buttons-field {
   text-align: center; }
   #buttons-field #saveBtn {
-    margin: 0.5em; }
+    margin: 0.8em; }
 
 #gameoverImg {
   width: 70%; }
@@ -135,7 +133,7 @@ a:link {
   #summary-field h1 {
     font-size: 2em; }
   #summary-field .userdataDivs {
-    margin: 0.6em;
+    margin: 0.5em;
     font-size: 1.5em;
     color: grey;
     display: inline-block; }
