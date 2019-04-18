@@ -34,14 +34,16 @@ a:link {
 
 .rankLinks {
     font-size: 0.8em;
-    padding-top: 1em;
+    margin-right: 0.5em;
+    padding-top: 1.2em;
     position: fixed;
+    color: grey;
     bottom: 0;
     right: 0;
     width: 10%;
     height: 100px;
     background-image: url('../images/crown.png');
-    background-size: contain;
+    background-size: 85%;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -128,8 +130,6 @@ a:link {
     100% {opacity: 1}
 }
 
-
-
 #buttons-field {
     text-align: center;
     
@@ -138,8 +138,8 @@ a:link {
     }
 }
 
-#gameoverImg {
-    width: 70%;
+#saveModalYesBtn {
+    width: 25%;
 }
 
 /*!*********************summary.html**********************/

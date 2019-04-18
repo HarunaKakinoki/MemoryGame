@@ -13,16 +13,14 @@ const TILES_HEADER = "Tiles : ";
 const RANK_HEADER = "Rank : ";
 const NAME_HEADER = "Name : ";
 
-
-
 /****************Index.html*****************/
 const QUIT_BTN = "Quit";
 const SAVE_BTN = "Save";
-const LEADERBOARD_LINK_TEXT = "See Leaderboard";
 const SOUND_CORRECT = "../../audio/correct.mp3";
 const SOUND_WRONG = "../../audio/wrong.mp3";
 const SOUND_GAMEOVER = "../../audio/gameOver.mp3";
 const SOUND_NEXTTRIAL = "../../audio/nextTrial.mp3";
+const LEADERBOARD_LINK_TEXT = "Go to Leaderboard Page";
 
 /***************summary.html***************/
 const SUMMARY_HEADER = "Your Play Data Summary!";

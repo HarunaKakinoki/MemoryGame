@@ -426,6 +426,13 @@ const highlightCurrentLevel = () => {
       }
 }
 
+const displayLeaderBoardLinkLetter = () => {
+    const links = document.getElementsByClassName('rankLinks');
+    for(let i = 0; i < links.length; i++) {
+        links[i].textContent = LEADERBOARD_LINK_TEXT;
+    }
+}
+
 const renderIndexView = () => {
     createLogo();
     createLevelField();
@@ -435,6 +442,7 @@ const renderIndexView = () => {
     createSwitchLevelModal();
     createQuitConfirmationModal();
     highlightCurrentLevel();
+    displayLeaderBoardLinkLetter();
 }
 
 const renderSummaryView = () => {
@@ -443,6 +451,7 @@ const renderSummaryView = () => {
     displayUserSummary();
     createNameForm();
     createRestartBtn('summary-restart-field');
+    displayLeaderBoardLinkLetter();
 }
 
 const renderLeaderboardView = () => {
