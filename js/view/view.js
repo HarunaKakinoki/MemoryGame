@@ -377,9 +377,13 @@ const createRankTable = (rankDataArray, tableSize) => {
         tbody.appendChild(tr);
     }
     
-    tr.appendChild(rankHeader, nameHeader, trialHeader, scoreHeader);
+    tr.appendChild(rankHeader);
+    tr.appendChild(nameHeader);
+    tr.appendChild(trialHeader);
+    tr.appendChild(scoreHeader);
     thead.appendChild(tr);
-    table.appendChild(thead, tbody);
+    table.appendChild(thead);
+    table.appendChild(tbody);
     appendElementToIdField('table-field', table);
 }
 
@@ -466,7 +470,7 @@ const renderLeaderboardView = () => {
     createLogo();
     createLeaderBoardSummary('rank-summary-field');
     displayUserSummary();
-    createRankTable(rankDataArray);
+    createRankTable(rankDataArray, 1);
     createRestartBtn('leaderboard-restart-field');
 }
 

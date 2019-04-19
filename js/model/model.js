@@ -230,7 +230,7 @@ if (xhr.HttpMethod == "OPTIONS")
 function getUserData() {
     let rankArray = [];
     
-    $.ajax({
+    /* $.ajax({
       type: 'GET',
       url: '/score/',
     }).done(function( data ) {
@@ -244,7 +244,7 @@ function getUserData() {
             
             rankArray.push(user);
         }
-    });
+    }); */
 
     const returnVal = new Promise(function (resolve, reject) {
         setTimeout(function () {
