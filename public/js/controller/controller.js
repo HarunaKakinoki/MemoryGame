@@ -191,5 +191,6 @@ const summaryInit = () => {
 const leaderboardInit = () => {
     renderLeaderboardView();
     setRestartBtnEvent();
+    getUserData();
 }
 

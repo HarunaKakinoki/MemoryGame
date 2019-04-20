@@ -178,6 +178,7 @@ function postUserData() {
     const trial = user.trial;
     const tiles = user.tiles;
     
+    //Ajax. (POST)
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if ( this.readyState == 4 && this.status == 200 ) {
@@ -202,7 +203,21 @@ function postUserData() {
 //Store all data into an array & return it.
 function getUserData() {
     let rankArray = [];
-    
+
+    //Ajax. (GET)
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", '/score/', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log('User\'s name is ' + xhr.responseText);
+        }
+        else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
+
     /* $.ajax({
       type: 'GET',
       url: '/score/',

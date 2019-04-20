@@ -14,12 +14,6 @@ const LOCAL_USER = "root"
 const LOCAL_PASSWORD = "";
 const LOCAL_DB_NAME = "memoryGame";
 
-//For Heroku Database.
-const DB_USER_NAME = "bffda148815d0d";
-const DB_PASSWORD = "5ec6452c";
-const DB_DB_NAME = "heroku_0fc69c30b0c19c6"
-const DB_HOST_NAME = "us-cdbr-iron-east-03.cleardb.net";
-
 //Allows accessing to the files inside "public" from browser.
 app.use(express.static('public'));
 app.use(bodyParser.json());
