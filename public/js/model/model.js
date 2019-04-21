@@ -3,6 +3,7 @@ const DEGREE_ARRAY = [90, 180, -90, -180];
 const SCORE_LOWER_BOUND = 0;
 const DEFAULT_SCORE_RATE = 1;
 const HARD_SCORE_RATE = 2;
+const RANK_TABLE_SIZE = 5; /*on leaderboard*/
 
 let score = 0;
 let trial = 1;
@@ -210,29 +211,13 @@ function getUserData() {
     xhr.open("GET", '/score/', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
-            console.log('User\'s name is ' + xhr.responseText);
+            //console.log(xhr.responseText);
         }
         else {
-            console.log('Request failed.  Returned status of ' + xhr.status);
+            console.log(xhr.status);
         }
     };
     xhr.send();
-
-    /* $.ajax({
-      type: 'GET',
-      url: '/score/',
-    }).done(function( data ) {
-        
-        //Iterate through all data acquired by GET.
-        for (let i = 0; i < Object.keys(data).length; i++) {
-            const user = {
-                name : data[i].username,
-                score : data[i].score
-            };
-            
-            rankArray.push(user);
-        }
-    }); */
 
     const returnVal = new Promise(function (resolve, reject) {
         setTimeout(function () {

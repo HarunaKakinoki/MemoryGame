@@ -142,14 +142,12 @@ const setSubmitBtnEvent = () => {
     button.onclick = function() {
         if(isNameInputValid()) {
             postUserData();
-            //window.location.href = LEADERBOARD_PATH;
+            window.location.href = LEADERBOARD_PATH;
         } else {
             showNameFormAlert();
         }
     };
 }
-
-
 
 const setChangingLevelEvent = () => {
     const buttons = document.getElementsByClassName('yesBtns');
@@ -189,8 +187,17 @@ const summaryInit = () => {
 }
 
 const leaderboardInit = () => {
-    renderLeaderboardView();
-    setRestartBtnEvent();
-    getUserData();
+    //After excecute getUserData(), excecute inside "then()".
+    getUserData().then(function (rankArray) { /*Value == rankArray from getUserData();*/
+        renderLeaderboardView(rankArray);
+        setRestartBtnEvent();
+        //addUserRank(rankArray);
+    }).catch(function (error) {
+    
+        console.log(error);
+  
+  });
 }
+
+
 

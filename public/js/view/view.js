@@ -328,6 +328,7 @@ const createRestartBtn = (fieldId) => {
 }
 
 const createRankTable = (rankDataArray, tableSize) => {
+    console.log(rankDataArray)
     //Create basic table elements.
     const table = createElement('table', 'table table-striped', 'rankTable');
     const thead = createElement('thead');
@@ -458,19 +459,11 @@ const renderSummaryView = () => {
     displayLeaderBoardLinkLetter();
 }
 
-const renderLeaderboardView = () => {
-    const rankDataArray = [];
-    const obj = {
-        name: "doraneko",
-        trial: 3,
-        score: 10
-    };
-    rankDataArray.push(obj);
-
+const renderLeaderboardView = (rankDataArray) => {
     createLogo();
     createLeaderBoardSummary('rank-summary-field');
     displayUserSummary();
-    createRankTable(rankDataArray, 1);
+    createRankTable(rankDataArray, RANK_TABLE_SIZE);
     createRestartBtn('leaderboard-restart-field');
 }
 
