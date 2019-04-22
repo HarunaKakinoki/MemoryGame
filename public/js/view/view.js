@@ -89,14 +89,12 @@ const createSwitchLevelModal = () => {
 
 const createGameOverModal = () => {
     createModal('main-container', 'gameOverModal');
-
     const modal = document.getElementById('gameOverModal');
     const modalInstance = new Modal(modal, {
         content: '<div class="modal-header">'
                 + '<h4 class="modal-title modalTitles">Game Over</h4>'
                 + '</div>'
                 + '<div class="modal-body">Score reached to 0! Please Retry!</div>'
-                + '<img id="gameoverImg" alt="game over image" src="../images/gameover.png">'
                 + '<div id="restart-btn-container">'
                 + '<button class="btn btn-primary" id="restartBtn">Restart</button>'
                 + '</div>', 
@@ -328,13 +326,12 @@ const createRestartBtn = (fieldId) => {
 }
 
 const createRankTable = (rankDataArray, tableSize) => {
-    console.log(rankDataArray)
     //Create basic table elements.
     const table = createElement('table', 'table table-striped', 'rankTable');
     const thead = createElement('thead');
     const tr = createElement('tr');
     const tbody = createElement('tbody');
-    
+
     //Create table headers.
     const rankHeader = createElement('td', 'tableHeaders');
     rankHeader.textContent = TABLE_HEADER_RANK  
@@ -358,7 +355,7 @@ const createRankTable = (rankDataArray, tableSize) => {
         
         //Name.
         const name = createElement('td', 'names');
-        name.textContent = rankDataArray[i].name;
+        name.textContent = rankDataArray[i].username;
 
         //Trial.
         const trial = createElement('td', 'rankTrials');

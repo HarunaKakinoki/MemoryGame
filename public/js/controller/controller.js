@@ -189,6 +189,7 @@ const summaryInit = () => {
 const leaderboardInit = () => {
     //After excecute getUserData(), excecute inside "then()".
     getUserData().then(function (rankArray) { /*Value == rankArray from getUserData();*/
+        console.log(rankArray);
         renderLeaderboardView(rankArray);
         setRestartBtnEvent();
         //addUserRank(rankArray);

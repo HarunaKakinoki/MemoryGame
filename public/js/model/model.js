@@ -210,10 +210,14 @@ function getUserData() {
 
     xhr.open("GET", '/score/', true);
     xhr.onload = function() {
+        //Sucess.
         if (xhr.status === 200) {
-            //console.log(xhr.responseText);
-        }
-        else {
+            const data = JSON.parse(xhr.responseText);
+            for(let i = 0; i < data.length; ++i) {
+                rankArray.push(data[i]);
+            }
+        //Fail.
+        } else {
             console.log(xhr.status);
         }
     };
