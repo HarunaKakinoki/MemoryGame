@@ -268,7 +268,7 @@ const createSummary = (fieldId) => {
 
 const createLeaderBoardSummary = (fieldId) => {
     //Rank.
-    const $rankDiv = createElement('div', 'userDataDivs');
+    const $rankDiv = createElement('div', 'userDataDivs', 'rank');
     const rankNum = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).rank;
     const rankHeader = createElement('span');
     rankHeader.textContent = RANK_HEADER;
@@ -435,6 +435,10 @@ const displayLeaderBoardLinkLetter = () => {
     }
 }
 
+const displayUserRank = (userRank) => {
+    document.getElementById('ranking').textContent = userRank;
+}
+
 const renderIndexView = () => {
     createLogo();
     createLevelField();
@@ -456,9 +460,10 @@ const renderSummaryView = () => {
     displayLeaderBoardLinkLetter();
 }
 
-const renderLeaderboardView = (rankDataArray) => {
+const renderLeaderboardView = (rankDataArray, userRank) => {
     createLogo();
     createLeaderBoardSummary('rank-summary-field');
+    displayUserRank(userRank);
     displayUserSummary();
     createRankTable(rankDataArray, RANK_TABLE_SIZE);
     createRestartBtn('leaderboard-restart-field');

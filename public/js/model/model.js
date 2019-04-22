@@ -232,15 +232,20 @@ function getUserData() {
     return  returnVal;
   }
 
-const searchUserRank = (rankDataArray) => {
+const searchUserRank = (rankArray) => {
     const userscore = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).score;
-    for(let i = 0; i < rankDataArray.length; ++i) {
-        if(userscore >= rankDataArray[i]) {
-            if(userscore != rankDataArray[i]) {
-                 return i;
+    let i;
+    for(i = 0; i < rankArray.length; ++i) {
+        console.log(userscore)
+        console.log(rankArray[i].score)
+        if(userscore >= rankArray[i].score) {
+            if(userscore != rankArray[i].score) {
+                console.log(i) 
+                return i;
             }
         }
     }
+    return i;
 }
 
 //Accept an audio object, play the audio.
