@@ -95,6 +95,9 @@ const createGameOverModal = () => {
                 + '<h4 class="modal-title modalTitles">Game Over</h4>'
                 + '</div>'
                 + '<div class="modal-body">Score reached to 0! Please Retry!</div>'
+                + '<div>'
+                + '<img id="gameOverImg" src="../images/game-over.png">'
+                + '</div>'
                 + '<div id="restart-btn-container">'
                 + '<button class="btn btn-primary" id="restartBtn">Restart</button>'
                 + '</div>', 
@@ -152,9 +155,9 @@ const createLevelField = () => {
 }
 
 const createUserDataField = (fieldId) => {
-    const $scoreDiv = createElement('div', 'userdataDivs');
-    const $trialDiv = createElement('div', 'userdataDivs');
-    const $tileDiv = createElement('div', 'userdataDivs');
+    const $scoreDiv = createElement('div', 'userDataDivs');
+    const $trialDiv = createElement('div', 'userDataDivs');
+    const $tileDiv = createElement('div', 'userDataDivs');
 
     //Score.
     const scoreHeader = createElement('span');
@@ -462,9 +465,12 @@ const renderSummaryView = () => {
 
 const renderLeaderboardView = (rankDataArray, userRank) => {
     createLogo();
-    createLeaderBoardSummary('rank-summary-field');
-    displayUserRank(userRank);
-    displayUserSummary();
+    
+    if(userRank !== 0) { /*When userRank === 0, then no user data is stored*/
+        createLeaderBoardSummary('rank-summary-field');
+        displayUserRank(userRank);
+        displayUserSummary();
+    }
     createRankTable(rankDataArray, RANK_TABLE_SIZE);
     createRestartBtn('leaderboard-restart-field');
 }

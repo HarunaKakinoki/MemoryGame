@@ -6,6 +6,7 @@ body {
     padding: 0;
     font-size: $default-fontsize;
     font-family: $default-font;
+    color: $default-text-color;
 }
 
 ul {
@@ -28,7 +29,7 @@ a:link {
     font-size: $default-button-fontsize;
 
     &:hover {
-        color: grey;
+        color: black;
     }
 }
 
@@ -37,7 +38,6 @@ a:link {
     margin-right: 0.5em;
     padding-top: 1.2em;
     position: fixed;
-    color: grey;
     bottom: 0;
     right: 0;
     width: 10%;
@@ -88,7 +88,7 @@ a:link {
 #userdata-field {
     text-align: center;
 
-    .userdataDivs {
+    .userDataDivs {
         @include playSummary();   
     }
 }
@@ -139,8 +139,23 @@ a:link {
 }
 
 #saveModalYesBtn {
-    width: 25%;
+    width: $default-button-width;
 }
+
+#gameOverModal {
+    text-align: center;
+
+    #gameOverImg {
+        margin: auto;
+        width: 50%;
+    }
+
+    #restartBtn {
+        margin: 1em 0;
+        width: $default-button-width;
+    }
+}
+
 
 /*!*********************summary.html**********************/
 #summary-field {
@@ -179,7 +194,7 @@ a:link {
 }
 
 .yesBtns, .noBtns {
-    width: 25%;
+    width: $default-button-width;
     display: inline-block;
     margin: 0.5em;
 }
@@ -195,15 +210,27 @@ a:link {
     background-size: contain;
     background-repeat: no-repeat;
 
+    .userDataDivs {
+        font-weight: bold;
+    }
+
     .userDatas {
         margin-right: 1em;
-        font-size: 1.4em;
+        font-size: 1.8em;
+        font-weight: normal;
     }
 }
 
 #table-field {
     text-align: center;
-    thead:first-child { background: $table-first-row-color; }
+    
+    thead:first-child { 
+        background: $table-first-row-color; 
+    }
+    
+    .tableHeaders {
+        font-weight: bold;
+    }
 }
 
 #leaderboard-restart-field {

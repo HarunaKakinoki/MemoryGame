@@ -20,7 +20,7 @@ const SOUND_CORRECT = "../../audio/correct.mp3";
 const SOUND_WRONG = "../../audio/wrong.mp3";
 const SOUND_GAMEOVER = "../../audio/gameOver.mp3";
 const SOUND_NEXTTRIAL = "../../audio/nextTrial.mp3";
-const LEADERBOARD_LINK_TEXT = "Go to Leaderboard Page";
+const LEADERBOARD_LINK_TEXT = "See Leaderboard";
 
 /***************summary.html***************/
 const SUMMARY_HEADER = "Your Play Data Summary!";

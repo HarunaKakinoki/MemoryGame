@@ -189,8 +189,18 @@ const summaryInit = () => {
 const leaderboardInit = () => {
     //After excecute getUserData(), excecute inside "then()".
     getUserData().then(function (rankArray) { /*Value == rankArray from getUserData();*/
-        const userRank = searchUserRank(rankArray);
-        renderLeaderboardView(rankArray, userRank);
+        
+        if (hasUserDataOnLocalStorage()) {
+            
+            const userRank = searchUserRank(rankArray);
+            renderLeaderboardView(rankArray, userRank);
+            clearLocalStorage(); /*Clear user data after display*/
+        
+        } else {
+            
+            renderLeaderboardView(rankArray, 0);
+        
+        }
         setRestartBtnEvent();
     }).catch(function (error) {
     

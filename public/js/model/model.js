@@ -248,6 +248,17 @@ const searchUserRank = (rankArray) => {
     return i;
 }
 
+const hasUserDataOnLocalStorage = () => {
+    if (localStorage.length === 0) {
+        return false;
+    }
+    return true;
+}
+
+const clearLocalStorage = () => {
+    localStorage.clear();
+}
+
 //Accept an audio object, play the audio.
 const playSound = (audioPath) => {
     const audio = new Audio(audioPath);

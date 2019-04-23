@@ -2,7 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.3em;
-  font-family: "Quattrocento Sans", sans-serif; }
+  font-family: "Quattrocento Sans", sans-serif;
+  color: #696969; }
 
 ul {
   margin: 0;
@@ -20,14 +21,13 @@ a:link {
   color: aliceblue;
   font-size: 1em; }
   .buttons:hover {
-    color: grey; }
+    color: black; }
 
 .rankLinks {
   font-size: 0.8em;
   margin-right: 0.5em;
   padding-top: 1.2em;
   position: fixed;
-  color: grey;
   bottom: 0;
   right: 0;
   width: 10%;
@@ -66,10 +66,10 @@ a:link {
 /*!*********************Index.html**********************/
 #userdata-field {
   text-align: center; }
-  #userdata-field .userdataDivs {
+  #userdata-field .userDataDivs {
     margin: 0.5em;
     font-size: 1.5em;
-    color: grey;
+    color: #696969;
     display: inline-block; }
 
 #matrix-container {
@@ -129,6 +129,15 @@ a:link {
 #saveModalYesBtn {
   width: 25%; }
 
+#gameOverModal {
+  text-align: center; }
+  #gameOverModal #gameOverImg {
+    margin: auto;
+    width: 50%; }
+  #gameOverModal #restartBtn {
+    margin: 1em 0;
+    width: 25%; }
+
 /*!*********************summary.html**********************/
 #summary-field {
   text-align: center; }
@@ -137,7 +146,7 @@ a:link {
   #summary-field .userdataDivs {
     margin: 0.5em;
     font-size: 1.5em;
-    color: grey;
+    color: #696969;
     display: inline-block; }
 
 #name-form {
@@ -171,14 +180,19 @@ a:link {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat; }
+  #rank-summary-field .userDataDivs {
+    font-weight: bold; }
   #rank-summary-field .userDatas {
     margin-right: 1em;
-    font-size: 1.4em; }
+    font-size: 1.8em;
+    font-weight: normal; }
 
 #table-field {
   text-align: center; }
   #table-field thead:first-child {
     background: #a6e9d7; }
+  #table-field .tableHeaders {
+    font-weight: bold; }
 
 #leaderboard-restart-field {
   text-align: center; }
