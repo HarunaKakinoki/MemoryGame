@@ -183,3 +183,30 @@ a:link {
     display: inline-block;
     margin: 0.5em;
 }
+
+/*!*********************leaderboard.html**********************/
+#rank-summary-field {
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../images/ranking.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    .userDatas {
+        margin-right: 1em;
+        font-size: 1.4em;
+    }
+}
+
+#table-field {
+    text-align: center;
+    thead:first-child { background: $table-first-row-color; }
+}
+
+#leaderboard-restart-field {
+    text-align: center;
+}
+

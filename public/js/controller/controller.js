@@ -190,7 +190,6 @@ const leaderboardInit = () => {
     //After excecute getUserData(), excecute inside "then()".
     getUserData().then(function (rankArray) { /*Value == rankArray from getUserData();*/
         const userRank = searchUserRank(rankArray);
-        alert(userRank)
         renderLeaderboardView(rankArray, userRank);
         setRestartBtnEvent();
     }).catch(function (error) {

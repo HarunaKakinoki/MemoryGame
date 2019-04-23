@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.3em;
-  font-family: Arial; }
+  font-family: "Quattrocento Sans", sans-serif; }
 
 ul {
   margin: 0;
@@ -160,5 +160,27 @@ a:link {
   width: 25%;
   display: inline-block;
   margin: 0.5em; }
+
+/*!*********************leaderboard.html**********************/
+#rank-summary-field {
+  height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../images/ranking.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat; }
+  #rank-summary-field .userDatas {
+    margin-right: 1em;
+    font-size: 1.4em; }
+
+#table-field {
+  text-align: center; }
+  #table-field thead:first-child {
+    background: #a6e9d7; }
+
+#leaderboard-restart-field {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
