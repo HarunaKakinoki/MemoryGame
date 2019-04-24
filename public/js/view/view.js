@@ -45,13 +45,21 @@ const createSwitchLevelModal = () => {
     const easyModal = new Modal(easy, 
     { // options object.
         content:  '<div class="modal-header">'
-                + '<h4 class="modal-title modalTitles">Switch level to Easy</h4>'
+                + '<h4 class="modal-title modalTitles">'
+                + EASY_MODAL_HEADER
+                + '</h4>'
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
-                + '<div class="modal-body">Do you really want to switch to Easy (3 x 3) Level?</div>'
+                + '<div class="modal-body">'
+                +EASY_MODAL_BODY
+                +'</div>'
                 + '<div class="yesno-btns-container">'
-                + '<button class="btn btn-primary yesBtns" value="easy">Yes</button>'
-                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                + '<button class="btn btn-primary yesBtns" value="easy">'
+                + YES_TEXT
+                + '</button>'
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">'
+                + NO_TEXT
+                +'</button>'
                 + '</div>', 
         keyboard: false 
     });
@@ -60,10 +68,14 @@ const createSwitchLevelModal = () => {
     const normalModal = new Modal(normal, 
     { // options object.
         content:  '<div class="modal-header">'
-                + '<h4 class="modal-title modalTitles">Switch level to Normal</h4>'
+                + '<h4 class="modal-title modalTitles">'
+                + NORMAL_MODAL_HEADER
+                +'</h4>'
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
-                + '<div class="modal-body">Do you really want to switch to Normal(4 x 4) Level?</div>'
+                + '<div class="modal-body">'
+                + NORMAL_MODAL_BODY
+                + '</div>'
                 + '<div class="yesno-btns-container">'
                 + '<button class="btn btn-primary yesBtns" value="normal">Yes</button>'
                 + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
@@ -75,10 +87,14 @@ const createSwitchLevelModal = () => {
     const hardModal = new Modal(hard, 
         { // options object.
             content:  '<div class="modal-header">'
-                    + '<h4 class="modal-title modalTitles">Switch level to Hard</h4>'
+                    + '<h4 class="modal-title modalTitles">'
+                    + HARD_MODAL_HEADER
+                    +'</h4>'
                     + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                     + '</div>'
-                    + '<div class="modal-body">Do you really want to switch to Hard(4 x 4 matrix & dobule scoring) Level?</div>'
+                    + '<div class="modal-body">'
+                    + HARD_MODAL_BODY
+                    +'</div>'
                     + '<div class="yesno-btns-container">'
                     + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
                     + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
@@ -108,19 +124,21 @@ const createGameOverModal = () => {
     return modalInstance;
 }
 
-const createQuitConfirmationModal = () => {
-    createModal('main-container', 'quitModal');
+const createSaveConfirmationModal = () => {
+    createModal('main-container', 'saveModal');
     
     const button = document.getElementById('saveBtn');
 
-    const quiteModal = new Modal(button, 
+    const saveModal = new Modal(button, 
     { // options object
         content:  '<div class="modal-header">'
                 + '<h4 class="modal-title modalTitles">Save Score</h4>'
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
-                + '<div class="modal-body">Move onto summary page and You can register your score with your name on the leaderboard.</div>'
-                + '<div class="modal-body">Really Ok to quit game now?'
+                + '<div class="modal-body">'
+                + SAVEMODAL_BODY
+                + '</div>'
+                + '<div class="modal-body">'
                 + '<div class="yesno-btns-container">'
                 + '<button class="btn btn-primary" id="saveModalYesBtn">Yes</button>'
                 + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
@@ -160,19 +178,19 @@ const createUserDataField = (fieldId) => {
     const $tileDiv = createElement('div', 'userDataDivs');
 
     //Score.
-    const scoreHeader = createElement('span');
+    const scoreHeader = createElement('span', 'userDataHeaders');
     scoreHeader.textContent = SCORE_HEADER;
     const userscore = createElement('span', 'userDatas', 'score');
     userscore.textContent = score;
     
     //Trial.
-    const trialHeader = createElement('span');
+    const trialHeader = createElement('span', 'userDataHeaders');
     trialHeader.textContent = TRIAL_HEADER;
     const trials = createElement('span', 'userDatas', 'trial');
     trials.textContent = trial;
 
     //Tiles.
-    const tilesHeader = createElement('span');
+    const tilesHeader = createElement('span', 'userDataHeaders');
     tilesHeader.textContent = TILES_HEADER;
     const numOftiles = createElement('span', 'userDatas', 'tiles');
     numOftiles.textContent = correctTiles;
@@ -193,7 +211,7 @@ const createUserDataField = (fieldId) => {
 
 const createMatrix = (size) => {
     let tileNum = 0;
-    const $div = createElement('div', 'col-12', 'tilesContainer');
+    const $div = createElement('div', '', 'tilesContainer');
     
     //Create matrix tiles.
     for(let i = 0; i < size; ++i) { /*row*/
@@ -255,15 +273,19 @@ function hideSelectedTiles() {
 const createSaveBtn = () => {
     const button = createElement('button', 'btn btn-warning buttons', 'saveBtn');
     button.textContent = SAVE_BTN;
-    button.setAttribute('data-target', '#quitModal');
+    button.setAttribute('data-target', '#saveModal');
     appendElementToIdField('buttons-field', button);
 }
 
 const createSummary = (fieldId) => {
     //Create header & append.
-    const header = createElement('h1');
+    const header = createElement('h1', '', 'summaryHeader');
     header.textContent = SUMMARY_HEADER;
+    const img = createElement('img', '', 'thumsupImg');
+    img.src = '../../images/thumsup.png';
+    img.alt = 'thumsup-image' ;
     appendElementToIdField(fieldId, header);
+    appendElementToIdField(fieldId, img);
 
     //Create User summary.
     createUserDataField(fieldId);
@@ -432,14 +454,26 @@ const highlightCurrentLevel = () => {
 }
 
 const displayLeaderBoardLinkLetter = () => {
-    const links = document.getElementsByClassName('rankLinks');
-    for(let i = 0; i < links.length; i++) {
-        links[i].textContent = LEADERBOARD_LINK_TEXT;
-    }
+    const link = document.getElementById('leaderboardLink');
+    link.textContent = LEADERBOARD_LINK_TEXT;
 }
 
 const displayUserRank = (userRank) => {
     document.getElementById('ranking').textContent = userRank;
+}
+
+const fadeIn = (element) => {
+    let opacity = 0.1;
+    element.style.opacity = opacity;
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (opacity >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = opacity;
+        element.style.filter = 'alpha(opacity=' + opacity * 100 + ")";
+        opacity += opacity * 0.1;
+    }, 10);
 }
 
 const renderIndexView = () => {
@@ -449,9 +483,12 @@ const renderIndexView = () => {
     createMatrix(sideOfMatrix);
     createSaveBtn();
     createSwitchLevelModal();
-    createQuitConfirmationModal();
+    createSaveConfirmationModal();
     highlightCurrentLevel();
     displayLeaderBoardLinkLetter();
+
+    const body = document.getElementById('main-container');
+    fadeIn(body);
 }
 
 const renderSummaryView = () => {
@@ -460,7 +497,9 @@ const renderSummaryView = () => {
     displayUserSummary();
     createNameForm();
     createRestartBtn('summary-restart-field');
-    displayLeaderBoardLinkLetter();
+
+    const body = document.getElementById('main-container');
+    fadeIn(body);
 }
 
 const renderLeaderboardView = (rankDataArray, userRank) => {
@@ -473,6 +512,9 @@ const renderLeaderboardView = (rankDataArray, userRank) => {
     }
     createRankTable(rankDataArray, RANK_TABLE_SIZE);
     createRestartBtn('leaderboard-restart-field');
+    
+    const body = document.getElementById('main-container');
+    fadeIn(body);
 }
 
 

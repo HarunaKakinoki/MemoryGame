@@ -5,9 +5,9 @@ const DEFAULT_SCORE_RATE = 1;
 const HARD_SCORE_RATE = 2;
 const RANK_TABLE_SIZE = 5; /*on leaderboard*/
 
-let score = 0;
-let trial = 1;
-let maxTiles = 0;
+let score = 0; 
+let trial = 1; /*Number of trials*/
+let maxTiles = 0; /*Maximum number of tiles(for a trial) user tried*/
 let currentLevel = LEVEL_ARRAY[1];
 let scoreRate = DEFAULT_SCORE_RATE; /*By default*/
 let sideOfMatrix = 4; /*By default, (Normal = 4 * 4 matrix)*/
@@ -249,9 +249,16 @@ const searchUserRank = (rankArray) => {
 }
 
 const hasUserDataOnLocalStorage = () => {
+
     if (localStorage.length === 0) {
         return false;
+    } else {
+        const username = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).name;
+        if (username === null) {
+            return false;
+        }
     }
+    
     return true;
 }
 

@@ -93,11 +93,9 @@ const gameOver = () => {
 }
 
 const setLeaderBoardLinkEvent = () => {
-    const rankLinks = document.getElementsByClassName('rankLinks');
-    for(let i = 0; i < rankLinks.length; ++i) {
-        rankLinks[i].onclick = function () {
-            window.location.href = LEADERBOARD_PATH;
-        };
+    const link = document.getElementById('leaderboardLink');
+    link.onclick = function () {
+        window.location.href = LEADERBOARD_PATH;
     } 
 }
 
@@ -183,7 +181,6 @@ const summaryInit = () => {
     renderSummaryView();
     setSubmitBtnEvent();
     setRestartBtnEvent();
-    setLeaderBoardLinkEvent();
 }
 
 const leaderboardInit = () => {

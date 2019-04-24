@@ -29,25 +29,33 @@ a:link {
     font-size: $default-button-fontsize;
 
     &:hover {
-        color: black;
+        color: $button-hover-color;
     }
 }
 
-.rankLinks {
+#leaderboardLink {
     font-size: 0.8em;
     margin-right: 0.5em;
-    padding-top: 1.2em;
+    padding-top: 2.8em;
     position: fixed;
     bottom: 0;
     right: 0;
     width: 10%;
     height: 100px;
-    background-image: url('../images/crown.png');
+    background-image: url($crown-img);
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
     text-align: center;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+#main-container { /*To fade in*/
+    display: none;
 }
 
 /*!*********************Navbar**********************/
@@ -89,7 +97,7 @@ a:link {
     text-align: center;
 
     .userDataDivs {
-        @include playSummary();   
+        @include playSummary();
     }
 }
 
@@ -99,10 +107,10 @@ a:link {
     z-index: 999;
 
     #tilesContainer {
-        width: 35%;
+        width: 30%;
         margin: 0 auto;
         -webkit-transition: transform 1.5s ease-in-out; /*Speed of Matrix rotating*/
-    
+       
         .matrixRows {
             display: block;
         }
@@ -138,8 +146,12 @@ a:link {
     }
 }
 
-#saveModalYesBtn {
-    width: $default-button-width;
+#saveModal {
+    text-align: center;
+
+    #saveModalYesBtn {
+        width: $default-button-width;
+    }
 }
 
 #gameOverModal {
@@ -160,13 +172,16 @@ a:link {
 /*!*********************summary.html**********************/
 #summary-field {
     text-align: center;
-
-    h1 {
-        font-size: 2em;
-    }
     
-    .userdataDivs {
+    img#thumsupImg {
+        width: 10%;
+        margin: 1em auto;
+        display: block;
+    }
+
+    .userDataDivs {
         @include playSummary();
+        margin-bottom: 0;
     }
 }
 
@@ -175,12 +190,14 @@ a:link {
 
     #nameAlert {
         visibility: hidden;
-        font-size: 0.8em;
-        color: red;
+        margin: 0;
+        padding: 0;
+        font-size: $alert-font-size;
+        color: $alert-text-color;
     }
 
     input, #submitBtn {
-        margin: 0.7em auto;
+        margin: 0 auto 0.7em auto;
         display: block;
     }
 }
@@ -205,7 +222,7 @@ a:link {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../../images/ranking.png');
+    background-image: url($rank-img);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -214,6 +231,9 @@ a:link {
         font-weight: bold;
     }
 
+    .userDataHeaders {
+        font-size: 1.4em;
+    }
     .userDatas {
         margin-right: 1em;
         font-size: 1.8em;

@@ -12,6 +12,8 @@ const TRIAL_HEADER = "Trial : ";
 const TILES_HEADER = "Tiles : ";
 const RANK_HEADER = "Rank : ";
 const NAME_HEADER = "Name : ";
+const YES_TEXT = "Yes";
+const NO_TEXT = "No";
 
 /****************Index.html*****************/
 const QUIT_BTN = "Quit";
@@ -34,3 +36,11 @@ const TABLE_HEADER_RANK = "Rank";
 const TABLE_HEADER_NAME = "Name";
 const TABLE_HEADER_TRIAL = "Trial";
 const TABLE_HEADER_SCORE = "Score";
+
+const SAVEMODAL_BODY = 'Register score with your name on the leaderboard. Are you sure to quit game now?';
+const EASY_MODAL_HEADER = "Switch level to Easy";
+const EASY_MODAL_BODY = "Are you sure to switch to Easy (3 x 3) Level?";
+const NORMAL_MODAL_HEADER = "Switch level to Normal";
+const NORMAL_MODAL_BODY = "Are you sure to switch to Normal(4 x 4) Level?";
+const HARD_MODAL_HEADER = "Switch level to Hard";
+const HARD_MODAL_BODY = "Are you sure to switch to Hard(4 x 4 matrix & dobule scoring) Level?";
