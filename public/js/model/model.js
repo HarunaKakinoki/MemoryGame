@@ -249,6 +249,14 @@ const searchUserRank = (rankArray) => {
 }
 
 const hasUserDataOnLocalStorage = () => {
+    if(localStorage.length === 0) {
+        return false;
+    }
+
+    return true;
+}
+
+const hasUserDataAndUserNameOnLocalStorage = () => {
 
     if (localStorage.length === 0) {
         return false;

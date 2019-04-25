@@ -178,16 +178,22 @@ const indexInit = () => {
 }
 
 const summaryInit = () => {
-    renderSummaryView();
-    setSubmitBtnEvent();
-    setRestartBtnEvent();
+    if(hasUserDataOnLocalStorage()) {
+        renderSummaryView();
+        setSubmitBtnEvent();
+        setRestartBtnEvent();
+    } else {
+        const modal = createNoDataAlertModal();
+        setRestartBtnEvent();
+        modal.show();
+    }
 }
 
 const leaderboardInit = () => {
     //After excecute getUserData(), excecute inside "then()".
     getUserData().then(function (rankArray) { /*Value == rankArray from getUserData();*/
         
-        if (hasUserDataOnLocalStorage()) {
+        if (hasUserDataAndUserNameOnLocalStorage()) {
             
             const userRank = searchUserRank(rankArray);
             renderLeaderboardView(rankArray, userRank);

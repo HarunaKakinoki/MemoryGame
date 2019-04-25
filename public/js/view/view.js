@@ -55,10 +55,10 @@ const createSwitchLevelModal = () => {
                 +'</div>'
                 + '<div class="yesno-btns-container">'
                 + '<button class="btn btn-primary yesBtns" value="easy">'
-                + YES_TEXT
+                + YES_BTN
                 + '</button>'
                 + '<button class="btn btn-danger noBtns" data-dismiss="modal">'
-                + NO_TEXT
+                + NO_BTN
                 +'</button>'
                 + '</div>', 
         keyboard: false 
@@ -77,8 +77,12 @@ const createSwitchLevelModal = () => {
                 + NORMAL_MODAL_BODY
                 + '</div>'
                 + '<div class="yesno-btns-container">'
-                + '<button class="btn btn-primary yesBtns" value="normal">Yes</button>'
-                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                + '<button class="btn btn-primary yesBtns" value="normal">'
+                + YES_BTN
+                + '</button>'
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">'
+                + NO_BTN
+                +'</button>'
                 + '</div>', 
         keyboard: false 
     });
@@ -96,8 +100,12 @@ const createSwitchLevelModal = () => {
                     + HARD_MODAL_BODY
                     +'</div>'
                     + '<div class="yesno-btns-container">'
-                    + '<button class="btn btn-primary yesBtns" value="hard">Yes</button>'
-                    + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                    + '<button class="btn btn-primary yesBtns" value="hard">'
+                    + YES_BTN
+                    + '</button>'
+                    + '<button class="btn btn-danger noBtns" data-dismiss="modal">'
+                    + NO_BTN
+                    +'</button>'
                     + '</div>',  
             keyboard: false 
         });
@@ -108,14 +116,44 @@ const createGameOverModal = () => {
     const modal = document.getElementById('gameOverModal');
     const modalInstance = new Modal(modal, {
         content: '<div class="modal-header">'
-                + '<h4 class="modal-title modalTitles">Game Over</h4>'
+                + '<h4 class="modal-title modalTitles">'
+                + GAMEOVER_MODAL_HEADER
+                +'</h4>'
                 + '</div>'
-                + '<div class="modal-body">Score reached to 0! Please Retry!</div>'
+                + '<div class="modal-body">' 
+                + GAMEOVER_MODAL_BODY 
+                + '</div>'
                 + '<div>'
                 + '<img id="gameOverImg" src="../images/game-over.png">'
                 + '</div>'
                 + '<div id="restart-btn-container">'
-                + '<button class="btn btn-primary" id="restartBtn">Restart</button>'
+                + '<button class="btn btn-primary" id="restartBtn">' 
+                + RESTART_BTN
+                + '</button>'
+                + '</div>', 
+        backdrop: 'static',
+        keyboard: false
+    });
+
+    return modalInstance;
+}
+
+const createNoDataAlertModal = () => {
+    createModal('main-container', 'noDataAlertModal');
+    const modal = document.getElementById('noDataAlertModal');
+    const modalInstance = new Modal(modal, {
+        content: '<div class="modal-header">'
+                + '<h4 class="modal-title modalTitles">'
+                + NODATA_ALERT_MODAL_HEADER
+                +'</h4>'
+                + '</div>'
+                + '<div class="modal-body">'
+                + NODATA_ALERT_MODAL_BODY
+                +'</div>'
+                + '<div id="restart-btn-container">'
+                + '<button class="btn btn-primary" id="restartBtn">'
+                + RESTART_BTN
+                +'</button>'
                 + '</div>', 
         backdrop: 'static',
         keyboard: false
@@ -132,23 +170,29 @@ const createSaveConfirmationModal = () => {
     const saveModal = new Modal(button, 
     { // options object
         content:  '<div class="modal-header">'
-                + '<h4 class="modal-title modalTitles">Save Score</h4>'
+                + '<h4 class="modal-title modalTitles">'
+                + SAVE_MODAL_HEADER
+                + '</h4>'
                 + '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
                 + '</div>'
                 + '<div class="modal-body">'
-                + SAVEMODAL_BODY
+                + SAVE_MODAL_BODY
                 + '</div>'
                 + '<div class="modal-body">'
                 + '<div class="yesno-btns-container">'
-                + '<button class="btn btn-primary" id="saveModalYesBtn">Yes</button>'
-                + '<button class="btn btn-danger noBtns" data-dismiss="modal">No</button>'
+                + '<button class="btn btn-primary" id="saveModalYesBtn">' 
+                + YES_BTN
+                + '</button>'
+                + '<button class="btn btn-danger noBtns" data-dismiss="modal">'
+                + NO_BTN
+                + '</button>'
                 + '</div>',  
         keyboard: false // we don't want to dismiss Modal on pressing Esc key
     });
 }
 
 const createLogo = () => {
-   const logoImg = createElement('img', '', 'logoImg');
+   const logoImg = createElement('img', 'img-fluid', 'logoImg');
    logoImg.src = LOGO_IMG_PATH;
    const a = createElement('a', '', 'logoLink');
    a.href = INDEX_PATH;
@@ -163,7 +207,6 @@ const createLevelField = () => {
         const li = createElement('li');
         const a = createElement('a', 'levelLinks');
         a.href = '#levelModal' + i;
-        //a.setAttribute('data-target', 'modalID');
         a.textContent = LEVEL_ARRAY[i];
         li.appendChild(a);
         ul.appendChild(li);
@@ -487,6 +530,7 @@ const renderIndexView = () => {
     highlightCurrentLevel();
     displayLeaderBoardLinkLetter();
 
+    //Fade in.
     const body = document.getElementById('main-container');
     fadeIn(body);
 }
@@ -498,6 +542,7 @@ const renderSummaryView = () => {
     createNameForm();
     createRestartBtn('summary-restart-field');
 
+    //Fade in.
     const body = document.getElementById('main-container');
     fadeIn(body);
 }
@@ -505,7 +550,7 @@ const renderSummaryView = () => {
 const renderLeaderboardView = (rankDataArray, userRank) => {
     createLogo();
     
-    if(userRank !== 0) { /*When userRank === 0, then no user data is stored*/
+    if(userRank > 0) { /*When userRank === 0, then no user data is stored*/
         createLeaderBoardSummary('rank-summary-field');
         displayUserRank(userRank);
         displayUserSummary();
@@ -513,6 +558,7 @@ const renderLeaderboardView = (rankDataArray, userRank) => {
     createRankTable(rankDataArray, RANK_TABLE_SIZE);
     createRestartBtn('leaderboard-restart-field');
     
+    //Fade in.
     const body = document.getElementById('main-container');
     fadeIn(body);
 }
