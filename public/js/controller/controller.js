@@ -3,9 +3,14 @@ const gameStart = () => {
     colourSelectedTiles();
     setTimeout(function() {
         hideSelectedTiles();
-        rotateMatrix();
-        setTileClickEvent();
-    }, 3000); /*After 3 seconds, hide tile color & Rotate matrix.*/
+        if(rotatedFlag === false) {
+            rotateMatrix();
+            setTileClickEvent();
+        } else {
+            rotatedFlag = false;
+            setTileClickEvent();
+        }  
+    }, 2000); /*After 2 seconds, hide tile color & Rotate matrix.*/
 }
 
 const processUserClick = (clickedTile) => {
@@ -67,6 +72,8 @@ const startNextTrial = () => {
 }
 
 function changeGameLevel(selectedLevel) {
+    rotatedFlag = false;
+
     //Set all data according to the selected level.
     setDataToChangeLevel(selectedLevel);
 
@@ -85,24 +92,19 @@ function changeGameLevel(selectedLevel) {
     startNextTrial();
 }
 
+const setTileClickEvent = () => {
+    for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
+        console.log(document.getElementById('tile' + i))
+        document.getElementById('tile' + i).onclick = function() { 
+            processUserClick(this);
+        };
+    }
+}
 
 const gameOver = () => {
     const modal = createGameOverModal();
     setRestartBtnEvent();
     modal.show();
-}
-
-const setLeaderBoardLinkEvent = () => {
-    const link = document.getElementById('leaderboardLink');
-    link.onclick = function () {
-        window.location.href = LEADERBOARD_PATH;
-    } 
-}
-
-const setRestartBtnEvent = () => {
-   document.getElementById('restartBtn').onclick = function () {
-        window.location.href = INDEX_PATH;
-   };
 }
 
 const setLevelBtnEvent = (selectedLevel) => {
@@ -128,25 +130,6 @@ const setLevelBtnEvent = (selectedLevel) => {
     }
 }
 
-const setSaveModalBtnEvent = () => {
-    document.getElementById('saveModalYesBtn').onclick = function () {
-        saveUserDataToLocalStorage();
-        window.location.href = SUMMARY_PATH;
-   };
-}
-
-const setSubmitBtnEvent = () => {
-    const button = document.getElementById('submitBtn');
-    button.onclick = function() {
-        if(isNameInputValid()) {
-            postUserData();
-            window.location.href = LEADERBOARD_PATH;
-        } else {
-            showNameFormAlert();
-        }
-    };
-}
-
 const setChangingLevelEvent = () => {
     const buttons = document.getElementsByClassName('yesBtns');
     for(let i = 0; i < buttons.length; ++i) {
@@ -160,12 +143,41 @@ const setChangingLevelEvent = () => {
     }
 }
 
-const setTileClickEvent = () => {
-    for(let i = 0; i < (sideOfMatrix * sideOfMatrix); ++i) {
-        console.log(document.getElementById('tile' + i))
-        document.getElementById('tile' + i).onclick = function() { 
-            processUserClick(this);
-        };
+const setSaveModalBtnEvent = () => {
+    document.getElementById('saveModalYesBtn').onclick = function () {
+        saveUserDataToLocalStorage();
+        window.location.href = SUMMARY_PATH;
+   };
+}
+
+const setLeaderBoardLinkEvent = () => {
+    const link = document.getElementById('leaderboardLink');
+    link.onclick = function () {
+        window.location.href = LEADERBOARD_PATH;
+    } 
+}
+
+const setSubmitBtnEvent = () => {
+    const button = document.getElementById('submitBtn');
+    button.onclick = function() {
+        if(isNameInputValid()) {
+            postUserDataToDatabase();
+            window.location.href = LEADERBOARD_PATH;
+        } else {
+            showNameFormAlert();
+        }
+    };
+}
+
+const setRestartBtnEvent = () => {
+    document.getElementById('restartBtn').onclick = function () {
+         window.location.href = INDEX_PATH;
+    };
+ }
+
+const disableOnclickEvent = (id) => {
+    document.getElementById(id).onclick = function () {
+        return false;
     }
 }
 
@@ -179,24 +191,26 @@ const indexInit = () => {
 
 const summaryInit = () => {
     if(hasUserDataOnLocalStorage()) {
-        renderSummaryView();
+        const userObj = getUserDataFromLocalStorage();
+        renderSummaryView(userObj);
         setSubmitBtnEvent();
         setRestartBtnEvent();
+    
     } else {
-        const modal = createNoDataAlertModal();
-        setRestartBtnEvent();
-        modal.show();
+        alert(NODATA_ALERT);
+        window.location.href = INDEX_PATH;
     }
 }
 
 const leaderboardInit = () => {
-    //After excecute getUserData(), excecute inside "then()".
-    getUserData().then(function (rankArray) { /*Value == rankArray from getUserData();*/
+    //After excecute getUserDataToDatabase(), excecute inside "then()".
+    getUserDataToDatabase().then(function (rankArray) { /*Value == rankArray from getUserDataToDatabase();*/
         
         if (hasUserDataAndUserNameOnLocalStorage()) {
             
+            const userObj = getUserDataFromLocalStorage();
             const userRank = searchUserRank(rankArray);
-            renderLeaderboardView(rankArray, userRank);
+            renderLeaderboardView(rankArray, userRank, userObj);
             clearLocalStorage(); /*Clear user data after display*/
         
         } else {

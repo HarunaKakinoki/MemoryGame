@@ -43,10 +43,7 @@ const INPUT_PLACEHOLDER = "Enter your name";
 const NAME_INPUT_ALERT = "Please enter user name to register score on the learderboard.";
 const SUBMIT_BTN = "Submit";
 const RESTART_BTN = "Restart";
-
-//Modal texts.
-const NODATA_ALERT_MODAL_HEADER = "No data is stored yet";
-const NODATA_ALERT_MODAL_BODY = "There is no data to display. Please save score on index page.";
+const NODATA_ALERT = "There is no data to display. Please save score on index page.";
 
 /***************leaderboard.html***************/
 const TABLE_HEADER_RANK = "Rank";

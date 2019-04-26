@@ -16,6 +16,8 @@ let correctTilesLowerBound = sideOfMatrix - 1;
 let correctTilesUpperBound = (sideOfMatrix * 2);
 let foundTiles = 0; /*Number of tiles user found in a trial.*/
 let mistakeFlag = false; /*A flag for user's mistake in a trial.*/
+let suspendedFlag = false;
+let rotatedFlag = false;
 let previousIndex = 0;  /*Store the last index of randomly generated degree.*/
 let selectedTileNumbers = [];
 
@@ -46,25 +48,12 @@ const selectTiles = () => {
         const randomNum = Math.floor((Math.random() * (totalTiles - 1) + 0));  
         numberSet.add(randomNum);
     }
+
     //Convert Set into Array & return the array.
     return Array.from(numberSet);
 }
 
-const disableOnclickEvent = (id) => {
-    document.getElementById(id).onclick = function () {
-        return false;
-    }
-}
-
-const addScore = () => {
-    score += scoreRate;
-}
-
-const minusScore = () => {
-    score -= scoreRate;
-}
-
-function checkClickedTile(clickedTile) {
+function checkClickedTile(clickedTile) { /*Not to bind "this", not using allow function*/
     
     if(clickedTile.className === "selectedTiles") {
         playSound(SOUND_CORRECT);
@@ -76,6 +65,19 @@ function checkClickedTile(clickedTile) {
     }
     playSound(SOUND_WRONG);
     return false;
+}
+
+const addScore = () => {
+    score += scoreRate;
+}
+
+const minusScore = () => {
+    score -= scoreRate;
+}
+
+const playSound = (audioPath) => {
+    const audio = new Audio(audioPath);
+    audio.play();
 }
 
 const setDataForNextTrial = () => {
@@ -139,7 +141,6 @@ const setDataToChangeLevel = (selectedLevel) => {
     mistakeFlag = false;
 }
 
-
 const saveUserDataToLocalStorage = () => {
     const user = {
         score : score,
@@ -152,9 +153,10 @@ const saveUserDataToLocalStorage = () => {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(user));
 }
 
+//Validate user input (User name to register on the leaderboard).
 const isNameInputValid = () => {
     const username = document.getElementById('nameInput').value;
-    if(username === "" || username == undefined) {
+    if(username.length === 0) {
         return false;
     }
     return true;
@@ -171,8 +173,17 @@ const saveUserNameToLocalStorage = (username) => {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(user));
 }
 
-//Post user data by using ajax.(Store data to database).
-function postUserData() {
+const getUserDataFromLocalStorage = () => {
+    const userObj = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+    return userObj;
+}
+
+const clearLocalStorage = () => {
+    localStorage.clear();
+}
+
+//Post user data to Database by using ajax.(Store data to database).
+const postUserDataToDatabase = () => {
     const user = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)); 
     const name = document.getElementById('nameInput').value; /*only username is get from user input*/
     const score = user.score;
@@ -200,9 +211,9 @@ function postUserData() {
     saveUserNameToLocalStorage(name);
 }
 
-//Get User Data by using ajax & 
+//Get User Data from Database by using ajax & 
 //Store all data into an array & return it.
-function getUserData() {
+const getUserDataToDatabase = () => {
     let rankArray = [];
 
     //Ajax. (GET)
@@ -232,12 +243,11 @@ function getUserData() {
     return  returnVal;
   }
 
+//Find current user's rank by comparing data in database.
 const searchUserRank = (rankArray) => {
     const userscore = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).score;
     let i;
     for(i = 0; i < rankArray.length; ++i) {
-        console.log(userscore)
-        console.log(rankArray[i].score)
         if(userscore >= rankArray[i].score) {
             if(userscore != rankArray[i].score) {
                 console.log(i) 
@@ -257,28 +267,25 @@ const hasUserDataOnLocalStorage = () => {
 }
 
 const hasUserDataAndUserNameOnLocalStorage = () => {
-
     if (localStorage.length === 0) {
+        
         return false;
+    
     } else {
+        
         const username = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)).name;
         if (username === null) {
             return false;
         }
+
     }
     
     return true;
 }
 
-const clearLocalStorage = () => {
-    localStorage.clear();
-}
 
-//Accept an audio object, play the audio.
-const playSound = (audioPath) => {
-    const audio = new Audio(audioPath);
-    audio.play();
-}
+
+
 
 
 
