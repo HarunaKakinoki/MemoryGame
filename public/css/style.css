@@ -250,25 +250,68 @@ a:link {
 /*!*********************summary.html**********************/
 #summary-field {
   text-align: center; }
+  #summary-field #summaryHeader {
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #summary-field #summaryHeader {
+        margin: 1em;
+        font-size: 1.3em; } }
+    @media (max-width: 480px) {
+      #summary-field #summaryHeader {
+        margin: 1.3em;
+        font-size: 1.1em; } }
   #summary-field img#thumsupImg {
     width: 10%;
     margin: 1em auto;
-    display: block; }
+    display: block;
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #summary-field img#thumsupImg {
+        width: 18%; } }
+    @media (max-width: 480px) {
+      #summary-field img#thumsupImg {
+        width: 22%; } }
   #summary-field .userDataDivs {
     margin: 0.5em;
     font-size: 1.5em;
     color: #696969;
     display: inline-block;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #summary-field .userDataDivs {
+        font-size: 1.2em; } }
+    @media (max-width: 480px) {
+      #summary-field .userDataDivs {
+        font-size: 1em; } }
 
 #name-form {
-  text-align: center; }
+  text-align: center;
+  /*Media Query*/
+  /*Media Query*/ }
+  @media (max-width: 768px) {
+    #name-form {
+      margin: 1em 0; } }
+  @media (max-width: 480px) {
+    #name-form {
+      margin: 1em 0; } }
   #name-form #nameAlert {
     visibility: hidden;
     margin: 0;
     padding: 0;
     font-size: 0.8em;
-    color: red; }
+    color: red;
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #name-form #nameAlert {
+        font-size: 0.7em; } }
+    @media (max-width: 480px) {
+      #name-form #nameAlert {
+        font-size: 0.5em; } }
   #name-form input, #name-form #submitBtn {
     margin: 0 auto 0.7em auto;
     display: block; }

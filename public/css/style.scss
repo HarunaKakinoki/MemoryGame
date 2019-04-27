@@ -265,21 +265,58 @@ a:link {
 /*!*********************summary.html**********************/
 #summary-field {
     text-align: center;
+
+    #summaryHeader {
+
+        @include breakpoint(sm) {
+            margin: 1em;
+            font-size: 1.3em;
+        }
+    
+        @include breakpoint(xs) {
+            margin: 1.3em;
+            font-size: 1.1em;
+        }
+    }
     
     img#thumsupImg {
         width: 10%;
         margin: 1em auto;
         display: block;
+
+        @include breakpoint(sm) {
+            width: 18%;
+        }
+    
+        @include breakpoint(xs) {
+            width: 22%;
+        }
     }
 
     .userDataDivs {
         @include playSummary();
         margin-bottom: 0;
+
+        @include breakpoint(sm) {
+            font-size: 1.2em;
+        }
+    
+        @include breakpoint(xs) {
+            font-size: 1em;
+        }
     }
 }
 
 #name-form {
     text-align: center;
+
+    @include breakpoint(sm) {
+        margin: 1em 0;
+    }
+
+    @include breakpoint(xs) {
+       margin: 1em 0;
+    }
 
     #nameAlert {
         visibility: hidden;
@@ -287,6 +324,14 @@ a:link {
         padding: 0;
         font-size: $alert-font-size;
         color: $alert-text-color;
+
+        @include breakpoint(sm) {
+            font-size: $alert-font-size-sm;
+        }
+    
+        @include breakpoint(xs) {
+            font-size: $alert-font-size-xs;
+        }
     }
 
     input, #submitBtn {
