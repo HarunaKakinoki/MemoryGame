@@ -237,7 +237,7 @@ const createLeaderBoardSummary = (fieldId, userObj) => {
     //Rank.
     const $rankDiv = createElement('div', 'userDataDivs', 'rank');
     const rankNum = userObj.rank;
-    const rankHeader = createElement('span');
+    const rankHeader = createElement('span', 'userDataHeaders');
     rankHeader.textContent = RANK_HEADER;
     const rank = createElement('span', 'userDatas', 'ranking');
     rank.textContent = rankNum;
@@ -245,7 +245,7 @@ const createLeaderBoardSummary = (fieldId, userObj) => {
     //Name.
     const $nameDiv = createElement('div', 'userDataDivs');
     const name = userObj.name;
-    const nameHeader = createElement('span');
+    const nameHeader = createElement('span', 'userDataHeaders');
     nameHeader.textContent = NAME_HEADER;
     const username = createElement('span', 'userDatas', 'userName');
     

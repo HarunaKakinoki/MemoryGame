@@ -38,7 +38,7 @@ a:link {
     }
 
     @include breakpoint(xs) {
-        width: 24%;
+        width: 30%;
     }
 
     &:hover {
@@ -47,15 +47,14 @@ a:link {
 }
 
 #leaderboardLink {
-    width: 11%;
+    width: 9%;
     height: 100px;
     margin-right: 0.2em;
-    padding-top: 2.8em;
     position: fixed;
     bottom: 0;
     right: 0;
     background-image: url($crown-img);
-    background-size: 85%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
@@ -233,9 +232,15 @@ a:link {
 
 #buttons-field {
     text-align: center;
+    z-index: 1000;
     
     #saveBtn {
         margin: 0.8em;
+
+        @include breakpoint(md) {
+            margin: 1em;
+        }
+    
     }
 }
 
@@ -256,11 +261,10 @@ a:link {
     }
 
     #restartBtn {
-        margin: 1em 0;
+        margin: 0.8em 0;
         width: $default-button-width;
     }
 }
-
 
 /*!*********************summary.html**********************/
 #summary-field {
@@ -340,11 +344,7 @@ a:link {
     }
 }
 
-#summary-restart-field {
-    text-align: center;
-}
-
-.yesno-btns-container {
+#summary-restart-field, .yesno-btns-container {
     text-align: center;
 }
 
@@ -364,23 +364,62 @@ a:link {
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    flex-wrap: wrap;
+
+    @include breakpoint(sm) {
+         
+        margin-top: 1.8em;
+    }
 
     .userDataDivs {
+        margin: 0 0.3em;
+        padding: 0.3em;
         font-weight: bold;
+        display: block;
+        border-radius: 10px;
+        background-color: rgba(152, 247, 192, 0.3);
     }
 
     .userDataHeaders {
         font-size: 1.4em;
+
+        @include breakpoint(sm) {
+            font-size: 1.1em;
+        }
+    
+        @include breakpoint(xs) {
+            font-size: 0.9em;
+        }
     }
+
     .userDatas {
-        margin-right: 1em;
         font-size: 1.8em;
         font-weight: normal;
+
+        @include breakpoint(sm) {
+            font-size: 1em;
+        }
+    
+        @include breakpoint(xs) {
+            font-size: 0.8em;
+        }
     }
 }
 
 #table-field {
     text-align: center;
+
+    @include breakpoint(md) {
+        font-size: 1em;
+    }
+
+    @include breakpoint(sm) {
+        font-size: 0.9em;
+    }
+
+    @include breakpoint(xs) {
+        font-size: 0.7em;
+    }
     
     thead:first-child { 
         background: $table-first-row-color; 
@@ -393,5 +432,23 @@ a:link {
 
 #leaderboard-restart-field {
     text-align: center;
+    margin: 0.5em 0fFF;
+
+    #restartBtn {
+        margin-top: 0.8em;
+        width: 10%;
+    
+        @include breakpoint(md) {
+            width: 15%;
+        }
+
+        @include breakpoint(sm) {
+            width: 20%;
+        }
+
+        @include breakpoint(sm) {
+            width: 30%;
+        }
+    }
 }
 
