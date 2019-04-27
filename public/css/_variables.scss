@@ -1,4 +1,5 @@
 /*!Default*/
+$min-width: 320px;
 $default-fontsize: 1.3em;
 $default-font : 'Quattrocento Sans', sans-serif;
 $default-background-color: #fff;
@@ -7,7 +8,9 @@ $default-text-color: #696969;
 /*!Tile*/
 $default-tile-color: #a6e9d7;
 $correct-tile-color: #0bcfc9;
-$tile-length: 3.4em;
+$tile-length: 3em;
+$tile-length-sm: 2.7em;
+$tile-length-xs: 2.5em;
 
 /*!Button*/
 $default-button-text-color: aliceblue;
@@ -17,6 +20,7 @@ $default-button-width: 25%;
 
 /*!summary.html*/
 $summary-fontsize: 1.5em;
+$summary-sm-fontsize: 1.3em;
 $summary-textcolor: #696969;
 
 /*!Default*/
@@ -24,7 +28,7 @@ $table-first-row-color: #a6e9d7;
 
 /*!Image path*/
 $logo-img: '../../images/logo.png';
-$crown-img: '../images/crown.png';
+$crown-img: '../images/leaderboard.png';
 $rank-img: '../../images/ranking.png';
 $game-over-img: '../../images/game-over.png';
 $thumsup-img: '../../images/thumsup.png';

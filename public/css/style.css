@@ -10,7 +10,8 @@ body {
   padding: 0;
   font-size: 1.3em;
   font-family: "Quattrocento Sans", sans-serif;
-  color: #696969; }
+  color: #696969;
+  min-width: 320px; }
 
 ul {
   margin: 0;
@@ -26,34 +27,57 @@ a:link {
   width: 9%;
   padding: 0.3em;
   color: aliceblue;
-  font-size: 1em; }
+  font-size: 1em;
+  /*Media Query*/
+  /*Media Query*/
+  /*Media Query*/ }
+  @media (max-width: 992px) {
+    .buttons {
+      width: 13%; } }
+  @media (max-width: 768px) {
+    .buttons {
+      width: 17%; } }
+  @media (max-width: 480px) {
+    .buttons {
+      width: 24%; } }
   .buttons:hover {
     color: black; }
 
 #leaderboardLink {
-  font-size: 0.8em;
-  margin-right: 0.5em;
+  width: 11%;
+  height: 100px;
+  margin-right: 0.2em;
   padding-top: 2.8em;
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 10%;
-  height: 100px;
-  background-image: url("../images/crown.png");
+  background-image: url("../images/leaderboard.png");
   background-size: 85%;
   background-repeat: no-repeat;
   background-position: center;
+  text-align: center;
   cursor: pointer;
-  text-align: center; }
+  /*Media Query*/
+  /*Media Query*/ }
+  @media (max-width: 768px) {
+    #leaderboardLink {
+      width: 18%; } }
+  @media (max-width: 480px) {
+    #leaderboardLink {
+      width: 22%; } }
 
 .modal-body {
-  text-align: center; }
+  text-align: center;
+  /*Media Query*/ }
+  @media (max-width: 768px) {
+    .modal-body {
+      font-size: 0.8em; } }
 
 #main-container {
   /*To fade in*/
   display: none; }
 
-/*!*********************Navbar**********************/
+/*!****************************Navbar*********************************/
 #logoImg {
   width: 6em; }
 
@@ -61,7 +85,11 @@ a:link {
   text-align: right; }
   #level-field li {
     margin: 0.6em;
-    display: inline-block; }
+    display: inline-block;
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #level-field li {
+        margin: 0.2em; } }
   #level-field .levelLinks {
     display: inline-block;
     padding: 0.5em 1em;
@@ -70,7 +98,16 @@ a:link {
     color: #ffffff;
     background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-    border-bottom: solid 3px #5e7fca; }
+    border-bottom: solid 3px #5e7fca;
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #level-field .levelLinks {
+        padding: 0.5em 0.8em; } }
+    @media (max-width: 480px) {
+      #level-field .levelLinks {
+        padding: 0.5em 0.7em;
+        font-size: 0.6em; } }
     #level-field .levelLinks:active {
       -webkit-transform: translateY(4px);
       transform: translateY(4px);
@@ -79,27 +116,63 @@ a:link {
 
 /*!*********************Index.html**********************/
 #userdata-field {
-  text-align: center; }
+  text-align: center;
+  /*Media Query*/ }
+  @media (max-width: 768px) {
+    #userdata-field {
+      margin: 1em 0; } }
   #userdata-field .userDataDivs {
     margin: 0.5em;
     font-size: 1.5em;
     color: #696969;
-    display: inline-block; }
+    display: inline-block;
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #userdata-field .userDataDivs {
+        font-size: 1.3em; } }
+    @media (max-width: 480px) {
+      #userdata-field .userDataDivs {
+        font-size: 1em; } }
 
 #matrix-container {
   margin: 0.5em 0;
   text-align: center;
-  z-index: 999; }
+  z-index: 999;
+  /*Media Query*/
+  /*Media Query*/
+  /*Media Query*/ }
+  @media (max-width: 992px) {
+    #matrix-container {
+      margin: 0.8em 0; } }
+  @media (max-width: 768px) {
+    #matrix-container {
+      margin: 1em 0; } }
+  @media (max-width: 480px) {
+    #matrix-container {
+      margin: 1.2m 0; } }
   #matrix-container #tilesContainer {
-    width: 30%;
+    width: 32%;
     margin: 0 auto;
     -webkit-transition: transform 1.5s ease-in-out;
-    /*Speed of Matrix rotating*/ }
+    /*Speed of Matrix rotating*/
+    /*Media Query*/
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 992px) {
+      #matrix-container #tilesContainer {
+        width: 40%; } }
+    @media (max-width: 768px) {
+      #matrix-container #tilesContainer {
+        width: 60%; } }
+    @media (max-width: 480px) {
+      #matrix-container #tilesContainer {
+        width: 85%; } }
     #matrix-container #tilesContainer .matrixRows {
       display: block; }
     #matrix-container #tilesContainer .matrixTiles {
-      width: 3.4em;
-      height: 3.4em;
+      width: 3em;
+      height: 3em;
       margin: 0 0.2em;
       background-color: #a6e9d7;
       display: inline-block;
@@ -108,10 +181,20 @@ a:link {
       animation: fadeIn 1s ease 0s 1 normal;
       /*Matrix fade-in setting*/
       -webkit-animation: fadeIn 1s ease 0s 1 normal;
-      /*Matrix fade-in setting*/ }
+      /*Matrix fade-in setting*/
+      /*Media Query*/
+      /*Media Query*/ }
+      @media (max-width: 768px) {
+        #matrix-container #tilesContainer .matrixTiles {
+          width: 2.7em;
+          height: 2.7em; } }
+      @media (max-width: 480px) {
+        #matrix-container #tilesContainer .matrixTiles {
+          width: 2.5em;
+          height: 2.5em; } }
     #matrix-container #tilesContainer .selectedTiles {
-      width: 3.4em;
-      height: 3.4em;
+      width: 3em;
+      height: 3em;
       margin: 0 0.2em;
       background-color: #a6e9d7;
       display: inline-block;
@@ -121,7 +204,17 @@ a:link {
       /*Matrix fade-in setting*/
       -webkit-animation: fadeIn 1s ease 0s 1 normal;
       /*Matrix fade-in setting*/
-      background-color: #0bcfc9; }
+      background-color: #0bcfc9;
+      /*Media Query*/
+      /*Media Query*/ }
+      @media (max-width: 768px) {
+        #matrix-container #tilesContainer .selectedTiles {
+          width: 2.7em;
+          height: 2.7em; } }
+      @media (max-width: 480px) {
+        #matrix-container #tilesContainer .selectedTiles {
+          width: 2.5em;
+          height: 2.5em; } }
 
 /*Fade in settings for matrix*/
 @keyframes fadeIn {

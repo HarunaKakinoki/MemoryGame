@@ -7,6 +7,7 @@ body {
     font-size: $default-fontsize;
     font-family: $default-font;
     color: $default-text-color;
+    min-width: $min-width;
 }
 
 ul {
@@ -28,42 +29,63 @@ a:link {
     color: $default-button-text-color;
     font-size: $default-button-fontsize;
 
+    @include breakpoint(md) {
+        width: 13%;
+    }
+
+    @include breakpoint(sm) {
+        width: 17%;
+    }
+
+    @include breakpoint(xs) {
+        width: 24%;
+    }
+
     &:hover {
         color: $button-hover-color;
     }
 }
 
 #leaderboardLink {
-    font-size: 0.8em;
-    margin-right: 0.5em;
+    width: 11%;
+    height: 100px;
+    margin-right: 0.2em;
     padding-top: 2.8em;
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 10%;
-    height: 100px;
     background-image: url($crown-img);
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: center;
-    cursor: pointer;
     text-align: center;
+    cursor: pointer;
+
+    @include breakpoint(sm) {
+        width: 18%;
+    }
+
+    @include breakpoint(xs) {
+        width: 22%;
+    }
 }
 
 .modal-body {
     text-align: center;
+
+    @include breakpoint(sm) {
+        font-size: 0.8em;
+    }
 }
 
 #main-container { /*To fade in*/
     display: none;
 }
 
-/*!*********************Navbar**********************/
+/*!****************************Navbar*********************************/
 
 #logoImg {
     width: 6em;
-    
-   
 }
 
 #level-field {
@@ -72,6 +94,10 @@ a:link {
     li {
         margin: 0.6em;
         display: inline-block;
+
+        @include breakpoint(sm) {
+           margin: 0.2em;
+        }
     }
 
     .levelLinks  {
@@ -83,6 +109,15 @@ a:link {
         background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
         border-bottom: solid 3px #5e7fca;
+
+        @include breakpoint(sm) {
+            padding: 0.5em 0.8em;
+        }
+
+        @include breakpoint(xs) {
+            padding: 0.5em 0.7em;
+            font-size: 0.6em;
+        }
 
             &:active {
                 -webkit-transform: translateY(4px);
@@ -97,9 +132,21 @@ a:link {
 /*!*********************Index.html**********************/
 #userdata-field {
     text-align: center;
+    
+    @include breakpoint(sm) {
+        margin: 1em 0;
+    }
 
     .userDataDivs {
         @include playSummary();
+        
+        @include breakpoint(sm) {
+            font-size: 1.3em;
+        }
+
+        @include breakpoint(xs) {
+            font-size: 1em;
+        }
     }
 }
 
@@ -108,22 +155,66 @@ a:link {
     text-align: center;
     z-index: 999;
 
+    @include breakpoint(md) {
+        margin: 0.8em 0;
+    }
+
+    @include breakpoint(sm) {
+        margin: 1em 0;
+    }
+
+    @include breakpoint(xs) {
+        margin: 1.2m 0;
+    }
+
     #tilesContainer {
-        width: 30%;
+        width: 32%;
         margin: 0 auto;
         -webkit-transition: transform 1.5s ease-in-out; /*Speed of Matrix rotating*/
        
+        @include breakpoint(md) {
+            width: 40%;
+        }
+
+        @include breakpoint(sm) {
+            width: 60%;
+        }
+
+        @include breakpoint(xs) {
+            width: 85%;
+        }
+
         .matrixRows {
             display: block;
         }
         
         .matrixTiles {
           @include tiles();
+          
+          @include breakpoint(sm) {
+            width: $tile-length-sm;
+            height: $tile-length-sm;
+          }
+
+          @include breakpoint(xs) {
+            width: $tile-length-xs;
+            height: $tile-length-xs;
+          }
         }
     
         .selectedTiles {
             @include tiles();
             background-color: $correct-tile-color;
+            
+            @include breakpoint(sm) {
+                width: $tile-length-sm;
+                height: $tile-length-sm;
+            }
+
+            @include breakpoint(xs) {
+                width: $tile-length-xs;
+                height: $tile-length-xs;
+            }
         }
     }
 }

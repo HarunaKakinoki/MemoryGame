@@ -19,7 +19,7 @@
 
 @mixin breakpoint($class) { /*Media Query*/
     @if $class == xs {
-      @media (max-width: 767px) { @content; }
+      @media (max-width: 480px) { @content; }
     }
    
     @else if $class == sm {

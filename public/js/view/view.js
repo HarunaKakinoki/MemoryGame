@@ -183,11 +183,6 @@ const createSaveBtn = () => {
     appendElementToIdField('buttons-field', button);
 }
 
-const displayLeaderBoardLinkLetter = () => {
-    const link = document.getElementById('leaderboardLink');
-    link.textContent = LEADERBOARD_LINK_TEXT;
-}
-
 //When score or trials or tiles are changed, reflect the change.
 const updateNumberDisplay = (fieldId, newNumber) => {
     document.getElementById(fieldId).textContent = newNumber;
@@ -511,7 +506,6 @@ const renderIndexView = () => {
     createSwitchLevelModal();
     createSaveConfirmationModal();
     highlightCurrentLevel();
-    displayLeaderBoardLinkLetter();
 
     //Fade in.
     const body = document.getElementById('main-container');
