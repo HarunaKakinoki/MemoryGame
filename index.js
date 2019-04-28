@@ -8,10 +8,10 @@ const mysql = require('mysql');
 const LOCAL_PORT = '8080';
 
 //Database settings.
-const DB_USER_NAME = env.process.DB_USER_NAME;
-const DB_PASSWORD = env.process.DB_PASSWORD;
-const DB_DATABASE_NAME = env.process.DB_DATABASE_NAME;
-const DB_HOST_NAME = env.process.DB_HOST_NAME;
+const DB_USER_NAME = process.env.DB_USER_NAME;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_DATABASE_NAME = process.env.DB_DATABASE_NAME;
+const DB_HOST_NAME = process.env.DB_HOST_NAME;
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
