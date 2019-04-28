@@ -18,13 +18,13 @@ app.use(bodyParser.json());
 app.set('port', process.env.PORT || LOCAL_PORT);
 
 //Create local Database & Table.
-function createDatabaseIfNotExist() {
+/*function createDatabaseIfNotExist() {
 
   //Create a connection to create a database.
   let con = mysql.createConnection({
-    host: LOCAL_HOST_NAME,
-    user: LOCAL_USER, 
-    password: LOCAL_PASSWORD
+    host: DB_HOST_NAME,
+    user: DB_USER_NAME, 
+    password: DB_PASSWORD
   });
 
   let sql = "CREATE DATABASE IF NOT EXISTS memoryGame;";
@@ -36,10 +36,10 @@ function createDatabaseIfNotExist() {
   setTimeout(function(){
      //Create a connection to create a database.
     con = mysql.createConnection({
-      host: LOCAL_HOST_NAME,
-      user: LOCAL_USER, 
-      password: LOCAL_PASSWORD,
-      database: LOCAL_DATABASE_NAME
+      host: DB_HOST_NAME,
+      user: DB_USER_NAME, 
+      password: DB_PASSWORD,
+      database: DB_DATABASE_NAME
     });
 
     //Connect to created database above.
@@ -59,7 +59,7 @@ function createDatabaseIfNotExist() {
     });
   }, 1000);
 }
-createDatabaseIfNotExist(); /*For local*/
+//createDatabaseIfNotExist(); */
 
 //Create Connection pool.
 const pool = mysql.createPool({
