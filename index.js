@@ -82,6 +82,7 @@ app.post('/score/add', async function (req, res) {
   
   pool.getConnection(function(err, con){
     con.query('INSERT INTO usertable set ?', {username: name, score: score, trial : trial, tiles: tiles}, function (error, results, fields) {
+      console.log(err.message)
       if (error) throw error;
       res.send('ok');
       con.release();
