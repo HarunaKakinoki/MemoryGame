@@ -71,6 +71,14 @@ const pool = mysql.createPool({
     connectionLimit : 10
 });
 
+//Create a connection to create a database.
+con = mysql.createConnection({
+  host: DB_HOST_NAME,
+  user: DB_USER_NAME, 
+  password: DB_PASSWORD,
+  database: DB_DATABASE_NAME
+});
+
 //Store user info to database.
 app.post('/score/add', async function (req, res) {
   console.log('/score/add');
