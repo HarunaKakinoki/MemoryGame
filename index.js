@@ -71,14 +71,6 @@ const pool = mysql.createPool({
     connectionLimit : 10
 });
 
-//Create a connection to create a database.
-const con = mysql.createConnection({
-  host: DB_HOST_NAME,
-  user: DB_USER_NAME, 
-  password: DB_PASSWORD,
-  database: DB_DATABASE_NAME
-});
-
 //Store user info to database.
 app.post('/score/add', async function (req, res) {
   console.log('/score/add');
@@ -111,7 +103,6 @@ app.get('/score/', function (req, res) {
 });
 
 //Listen server.
-/*process.env.PORT is for deployment. Use local_port_number for local test*/
 app.listen(app.get('port'), function () { 
   console.log('listening on port ' + app.get('port'));
 });
