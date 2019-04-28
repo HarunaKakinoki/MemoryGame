@@ -72,7 +72,7 @@ const pool = mysql.createPool({
 });
 
 //Create a connection to create a database.
-con = mysql.createConnection({
+const con = mysql.createConnection({
   host: DB_HOST_NAME,
   user: DB_USER_NAME, 
   password: DB_PASSWORD,
