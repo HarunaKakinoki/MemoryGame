@@ -331,25 +331,29 @@ a:link {
 /*!*********************leaderboard.html**********************/
 #rank-summary-field {
   height: 5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   background-image: url("../../images/ranking.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  flex-wrap: wrap;
   /*Media Query*/ }
   @media (max-width: 768px) {
     #rank-summary-field {
-      margin-top: 1.8em; } }
+      height: 8em;
+      margin-top: 1em;
+      text-align: left; } }
   #rank-summary-field .userDataDivs {
-    margin: 0 0.3em;
-    padding: 0.3em;
+    display: inline-block;
+    margin: 0 1em;
     font-weight: bold;
-    display: block;
-    border-radius: 10px;
-    background-color: rgba(152, 247, 192, 0.3); }
+    /*Media Query*/
+    /*Media Query*/ }
+    @media (max-width: 768px) {
+      #rank-summary-field .userDataDivs {
+        display: block; } }
+    @media (max-width: 480px) {
+      #rank-summary-field .userDataDivs {
+        display: block; } }
   #rank-summary-field .userDataHeaders {
     font-size: 1.4em;
     /*Media Query*/

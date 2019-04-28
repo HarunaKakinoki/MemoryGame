@@ -1,22 +1,21 @@
 'use strict'
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const LOCAL_PORT = '8080';
 
-//Port Numbers.
-const local_port_number = '8080';
-const heroku_port_number = process.env.PORT;
+//Database settings.
+const DB_USER_NAME = env.process.DB_USER_NAME;
+const DB_PASSWORD = env.process.DB_PASSWORD;
+const DB_DATABASE_NAME = env.process.DB_DATABASE_NAME;
+const DB_HOST_NAME = env.process.DB_HOST_NAME;
 
-//For Local Database.
-const LOCAL_HOST_NAME = "localhost";
-const LOCAL_USER = "root"
-const LOCAL_PASSWORD = "";
-const LOCAL_DB_NAME = "memoryGame";
-
-//Allows accessing to the files inside "public" from browser.
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.set('port', process.env.PORT || LOCAL_PORT);
 
 //Create local Database & Table.
 function createDatabaseIfNotExist() {
@@ -40,14 +39,14 @@ function createDatabaseIfNotExist() {
       host: LOCAL_HOST_NAME,
       user: LOCAL_USER, 
       password: LOCAL_PASSWORD,
-      database: LOCAL_DB_NAME
+      database: LOCAL_DATABASE_NAME
     });
 
     //Connect to created database above.
     //Create a table inside of the db.
     con.connect(function(err) {
       let sql = "CREATE TABLE IF NOT EXISTS userTable" 
-      + "(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY," /*ID (auto increment)*/
+      + "(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,"
       + "username     VARCHAR(255),"  
       + "score        INT,"                   
       + "trial        INT,"
@@ -60,28 +59,16 @@ function createDatabaseIfNotExist() {
     });
   }, 1000);
 }
-
-/*** Please comment out a below line When you create a local database ****/
-createDatabaseIfNotExist();
+createDatabaseIfNotExist(); /*For local*/
 
 //Create Connection pool.
-/*const pool = mysql.createPool({
+const pool = mysql.createPool({
     host     : DB_HOST_NAME,
     user     : DB_USER_NAME,
     password : DB_PASSWORD,
-    database : DB_DB_NAME,
+    database : DB_DATABASE_NAME,
     queueLimit : 0, // unlimited queueing
     connectionLimit : 10
-});*/
-
-//Create Connection pool.(For local)
-const pool = mysql.createPool({
-  host     : LOCAL_HOST_NAME,
-  user     : LOCAL_USER,
-  password : LOCAL_PASSWORD,
-  database : LOCAL_DB_NAME,
-  queueLimit : 0, // unlimited queueing
-  connectionLimit : 10
 });
 
 //Store user info to database.
@@ -117,6 +104,6 @@ app.get('/score/', function (req, res) {
 
 //Listen server.
 /*process.env.PORT is for deployment. Use local_port_number for local test*/
-app.listen(local_port_number, function () { 
-  console.log('listening on port ' + local_port_number);
+app.listen(app.get('port'), function () { 
+  console.log('listening on port ' + app.get('port'));
 });
