@@ -81,6 +81,7 @@ app.post('/score/add', async function (req, res) {
   const tiles = req.body.tiles;
   
   pool.getConnection(function(err, con){
+    console.log(err);
     con.query('INSERT INTO usertable set ?', {username: name, score: score, trial : trial, tiles: tiles}, function (error, results, fields) {
       console.log(err.message)
       if (error) throw error;
@@ -95,9 +96,9 @@ app.get('/score/', function (req, res) {
   console.log('/score/');
   pool.getConnection(function(err, con){
       con.query('SELECT * from usertable ORDER BY score DESC, id ASC;', function (error, results, fields) {
-      if (error) throw error;
-      console.log(results);
-      res.send(results);
+        if (error) throw error;
+        console.log(results);
+        res.send(results);
       });
       con.release();
   });
